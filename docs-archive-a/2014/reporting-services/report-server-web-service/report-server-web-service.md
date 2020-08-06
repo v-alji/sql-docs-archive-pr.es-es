@@ -1,0 +1,78 @@
+---
+title: Servicio web del servidor de informes | Microsoft Docs
+ms.custom: ''
+ms.date: 06/13/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: reporting-services
+ms.topic: reference
+helpviewer_keywords:
+- SSIS, Web service
+- Web service [Reporting Services]
+- Reporting Services, extending
+- SQL Server Reporting Services, Web service
+- Reporting Services, Web service
+- XML Web service [Reporting Services]
+- Report Server Web service
+ms.assetid: 16c21dec-6b46-4497-9a0c-1b0f2b6ab8fc
+author: maggiesMSFT
+ms.author: maggies
+manager: kfile
+ms.openlocfilehash: 8bb43a0fa52a243bd250f70fac16e18d949f8197
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: es-ES
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87672638"
+---
+# <a name="report-server-web-service"></a><span data-ttu-id="2c5db-102">servicio web del servidor de informes</span><span class="sxs-lookup"><span data-stu-id="2c5db-102">Report Server Web Service</span></span>
+  [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]<span data-ttu-id="2c5db-103">[!INCLUDE[ssRSnoversion](../../includes/ssrsnoversion-md.md)]proporciona acceso a la funcionalidad completa del servidor de informes a través del servicio Web del servidor de informes.</span><span class="sxs-lookup"><span data-stu-id="2c5db-103">[!INCLUDE[ssRSnoversion](../../includes/ssrsnoversion-md.md)] provides access to the full functionality of the report server through the Report Server Web service.</span></span> <span data-ttu-id="2c5db-104">El servicio web del servidor de informes es un servicio web XML con una API SOAP.</span><span class="sxs-lookup"><span data-stu-id="2c5db-104">The Report Server Web service is an XML Web service with a SOAP API.</span></span> <span data-ttu-id="2c5db-105">Utiliza SOAP sobre HTTP y actúa como interfaz de comunicaciones entre los programas clientes y el servidor de informes.</span><span class="sxs-lookup"><span data-stu-id="2c5db-105">It uses SOAP over HTTP and acts as a communications interface between client programs and the report server.</span></span> <span data-ttu-id="2c5db-106">El servicio web proporciona dos extremos, uno para la ejecución y otro para la administración de informes, con métodos que exponen la funcionalidad del servidor de informes y le permiten crear herramientas personalizadas para cualquier parte del ciclo de vida del informe.</span><span class="sxs-lookup"><span data-stu-id="2c5db-106">The Web service provides two endpoints - one for report execution and one for report management - with methods that expose the functionality of the report server and enable you to create custom tools for any part of the report life cycle.</span></span>  
+  
+ <span data-ttu-id="2c5db-107">Hay tres modos principales para desarrollar aplicaciones de [!INCLUDE[ssRSnoversion](../../includes/ssrsnoversion-md.md)] basadas en el servicio web.</span><span class="sxs-lookup"><span data-stu-id="2c5db-107">There are three primary ways to develop [!INCLUDE[ssRSnoversion](../../includes/ssrsnoversion-md.md)] applications based on the Web service.</span></span> <span data-ttu-id="2c5db-108">Puede:</span><span class="sxs-lookup"><span data-stu-id="2c5db-108">You can:</span></span>  
+  
+-   <span data-ttu-id="2c5db-109">Desarrolle aplicaciones con [!INCLUDE[msCoName](../../includes/msconame-md.md)] [!INCLUDE[vsprvs](../../includes/vsprvs-md.md)] y el [!INCLUDE[msCoName](../../includes/msconame-md.md)] [!INCLUDE[dnprdnshort](../../includes/dnprdnshort-md.md)] SDK de.</span><span class="sxs-lookup"><span data-stu-id="2c5db-109">Develop applications using [!INCLUDE[msCoName](../../includes/msconame-md.md)] [!INCLUDE[vsprvs](../../includes/vsprvs-md.md)] and the [!INCLUDE[msCoName](../../includes/msconame-md.md)] [!INCLUDE[dnprdnshort](../../includes/dnprdnshort-md.md)] SDK.</span></span> <span data-ttu-id="2c5db-110">Para más información sobre cómo usar [!INCLUDE[dnprdnshort](../../includes/dnprdnshort-md.md)] para generar las aplicaciones del servicio web, vea [Creación de aplicaciones con el servicio Web y .NET Framework](../report-server-web-service/net-framework/building-applications-using-the-web-service-and-the-net-framework.md).</span><span class="sxs-lookup"><span data-stu-id="2c5db-110">For more information about using the [!INCLUDE[dnprdnshort](../../includes/dnprdnshort-md.md)] to build Web service applications, see [Building Applications Using the Web Service and the .NET Framework](../report-server-web-service/net-framework/building-applications-using-the-web-service-and-the-net-framework.md).</span></span>  
+  
+-   <span data-ttu-id="2c5db-111">Desarrollar aplicaciones con la utilidad **rs** (RS.exe), el entorno de script de [!INCLUDE[ssRSnoversion](../../includes/ssrsnoversion-md.md)].</span><span class="sxs-lookup"><span data-stu-id="2c5db-111">Develop applications using the **rs** utility (RS.exe), the [!INCLUDE[ssRSnoversion](../../includes/ssrsnoversion-md.md)] script environment.</span></span> <span data-ttu-id="2c5db-112">Con los scripts de [!INCLUDE[ssRSnoversion](../../includes/ssrsnoversion-md.md)] y [!INCLUDE[vbprvb](../../includes/vbprvb-md.md)] puede ejecutar cualquiera de las operaciones del servicio web del servidor de informes.</span><span class="sxs-lookup"><span data-stu-id="2c5db-112">With [!INCLUDE[ssRSnoversion](../../includes/ssrsnoversion-md.md)] and [!INCLUDE[vbprvb](../../includes/vbprvb-md.md)] scripts, you can run any of the Report Server Web service operations.</span></span> <span data-ttu-id="2c5db-113">Para más información sobre cómo crear scripts en [!INCLUDE[ssRSnoversion](../../includes/ssrsnoversion-md.md)], vea [Script con la utilidad rs.exe y el servicio web](../tools/script-with-the-rs-exe-utility-and-the-web-service.md).</span><span class="sxs-lookup"><span data-stu-id="2c5db-113">For more information about scripting in [!INCLUDE[ssRSnoversion](../../includes/ssrsnoversion-md.md)], see [Script with the rs.exe Utility and the Web Service](../tools/script-with-the-rs-exe-utility-and-the-web-service.md).</span></span>  
+  
+-   <span data-ttu-id="2c5db-114">Desarrollar aplicaciones con cualquier conjunto habilitado para SOAP de herramientas de desarrollo.</span><span class="sxs-lookup"><span data-stu-id="2c5db-114">Develop applications using any SOAP-enabled set of development tools.</span></span> <span data-ttu-id="2c5db-115">Para más información, vea [El rol de SOAP en Reporting Services](../report-server-web-service/the-role-of-soap-in-reporting-services.md).</span><span class="sxs-lookup"><span data-stu-id="2c5db-115">For more information, see [The Role of SOAP in Reporting Services](../report-server-web-service/the-role-of-soap-in-reporting-services.md).</span></span>  
+  
+## <a name="programming-diagram"></a><span data-ttu-id="2c5db-116">Diagrama de programación</span><span class="sxs-lookup"><span data-stu-id="2c5db-116">Programming Diagram</span></span>  
+ <span data-ttu-id="2c5db-117">![Opciones de desarrollo del servicio web del servidor de informes](../../../2014/reporting-services/media/reportserviceswebserviceprog-01.gif "Opciones de desarrollo del servicio web del servidor de informes")</span><span class="sxs-lookup"><span data-stu-id="2c5db-117">![Report Server Web service development options](../../../2014/reporting-services/media/reportserviceswebserviceprog-01.gif "Report Server Web service development options")</span></span>  
+<span data-ttu-id="2c5db-118">Opciones de desarrollo de servicio web disponibles en Reporting Services</span><span class="sxs-lookup"><span data-stu-id="2c5db-118">Reporting Services available Web service development options</span></span>  
+  
+## <a name="in-this-section"></a><span data-ttu-id="2c5db-119">En esta sección</span><span class="sxs-lookup"><span data-stu-id="2c5db-119">In This Section</span></span>  
+ [<span data-ttu-id="2c5db-120">Métodos del servicio web del servidor de informes</span><span class="sxs-lookup"><span data-stu-id="2c5db-120">Report Server Web Service Methods</span></span>](../report-server-web-service/methods/report-server-web-service-methods.md)  
+ <span data-ttu-id="2c5db-121">Describe las características y métodos de cada servicio web del servidor de informes.</span><span class="sxs-lookup"><span data-stu-id="2c5db-121">Describes the features and methods of each Report Server Web service.</span></span>  
+  
+ [<span data-ttu-id="2c5db-122">El rol de SOAP en Reporting Services</span><span class="sxs-lookup"><span data-stu-id="2c5db-122">The Role of SOAP in Reporting Services</span></span>](../report-server-web-service/the-role-of-soap-in-reporting-services.md)  
+ <span data-ttu-id="2c5db-123">Proporciona información general de SOAP y de cómo se utiliza en los servicios web del servidor de informes.</span><span class="sxs-lookup"><span data-stu-id="2c5db-123">Provides an overview of SOAP and how it is used in the Report Server Web services.</span></span>  
+  
+ [<span data-ttu-id="2c5db-124">Acceso a la API SOAP</span><span class="sxs-lookup"><span data-stu-id="2c5db-124">Accessing the SOAP API</span></span>](../report-server-web-service/accessing-the-soap-api.md)  
+ <span data-ttu-id="2c5db-125">Describe el lenguaje de descripción de servicios web (WSDL) y proporciona direcciones URL para tener acceso a un archivo WSDL de Reporting Services.</span><span class="sxs-lookup"><span data-stu-id="2c5db-125">Describes the Web Service Description Language (WSDL) and provides URLs for accessing a Reporting Services WSDL file.</span></span>  
+  
+ [<span data-ttu-id="2c5db-126">Creación de aplicaciones con el servicio web y .NET Framework</span><span class="sxs-lookup"><span data-stu-id="2c5db-126">Building Applications Using the Web Service and the .NET Framework</span></span>](../report-server-web-service/net-framework/building-applications-using-the-web-service-and-the-net-framework.md)  
+ <span data-ttu-id="2c5db-127">Contiene información sobre cómo desarrollar aplicaciones y servicios web que llaman a la API SOAP de Reporting Services.</span><span class="sxs-lookup"><span data-stu-id="2c5db-127">Contains information about developing applications and Web services that call the Reporting Services SOAP API.</span></span>  
+  
+ [<span data-ttu-id="2c5db-128">Script con la utilidad rs.exe y el servicio Web</span><span class="sxs-lookup"><span data-stu-id="2c5db-128">Script with the rs.exe Utility and the Web Service</span></span>](../tools/script-with-the-rs-exe-utility-and-the-web-service.md)  
+ <span data-ttu-id="2c5db-129">Proporciona información general del entorno de scripting de [!INCLUDE[ssRSnoversion](../../includes/ssrsnoversion-md.md)] .</span><span class="sxs-lookup"><span data-stu-id="2c5db-129">Provides an overview of the [!INCLUDE[ssRSnoversion](../../includes/ssrsnoversion-md.md)] scripting environment.</span></span>  
+  
+ [<span data-ttu-id="2c5db-130">Referencia técnica &#40;SSRS&#41;</span><span class="sxs-lookup"><span data-stu-id="2c5db-130">Technical Reference &#40;SSRS&#41;</span></span>](../../../2014/reporting-services/technical-reference-ssrs.md)  
+ <span data-ttu-id="2c5db-131">Contiene material de referencia específico de los métodos de servicios web del servidor de informes y los tipos complejos correspondientes.</span><span class="sxs-lookup"><span data-stu-id="2c5db-131">Contains reference material specific to Report Server Web services methods and corresponding complex types.</span></span>  
+  
+## <a name="user-requirements-for-web-service-development"></a><span data-ttu-id="2c5db-132">Requisitos del usuario para el desarrollo de servicios web</span><span class="sxs-lookup"><span data-stu-id="2c5db-132">User Requirements for Web Service Development</span></span>  
+ <span data-ttu-id="2c5db-133">Para desarrollar aplicaciones con el servicio web del servidor de informes, necesita:</span><span class="sxs-lookup"><span data-stu-id="2c5db-133">To develop applications using the Report Server Web service, you need:</span></span>  
+  
+-   [!INCLUDE[msCoName](../../includes/msconame-md.md)] <span data-ttu-id="2c5db-134">Internet Explorer 5.5 o posteriores instalados en un equipo con una conexión a Internet a y acceso al servidor de informes.</span><span class="sxs-lookup"><span data-stu-id="2c5db-134">Internet Explorer 5.5 or later installed on a computer with an Internet connection to and access to the report server.</span></span>  
+  
+-   [!INCLUDE[msCoName](../../includes/msconame-md.md)]<span data-ttu-id="2c5db-135">[!INCLUDE[vsprvs](../../includes/vsprvs-md.md)]o el [!INCLUDE[msCoName](../../includes/msconame-md.md)] [!INCLUDE[dnprdnshort](../../includes/dnprdnshort-md.md)] SDK instalado en un equipo si desea desarrollar e implementar [!INCLUDE[ssRSnoversion](../../includes/ssrsnoversion-md.md)] aplicaciones con [!INCLUDE[msCoName](../../includes/msconame-md.md)] [!INCLUDE[dnprdnshort](../../includes/dnprdnshort-md.md)] .</span><span class="sxs-lookup"><span data-stu-id="2c5db-135">[!INCLUDE[vsprvs](../../includes/vsprvs-md.md)] or the [!INCLUDE[msCoName](../../includes/msconame-md.md)] [!INCLUDE[dnprdnshort](../../includes/dnprdnshort-md.md)] SDK installed on a computer if you want to develop and deploy [!INCLUDE[ssRSnoversion](../../includes/ssrsnoversion-md.md)] applications using the [!INCLUDE[msCoName](../../includes/msconame-md.md)] [!INCLUDE[dnprdnshort](../../includes/dnprdnshort-md.md)].</span></span>  
+  
+-   <span data-ttu-id="2c5db-136">Una comprensión detallada de [!INCLUDE[msCoName](../../includes/msconame-md.md)] [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] [!INCLUDE[ssRSnoversion](../../includes/ssrsnoversion-md.md)] las características y capacidades.</span><span class="sxs-lookup"><span data-stu-id="2c5db-136">An in-depth understanding of [!INCLUDE[msCoName](../../includes/msconame-md.md)] [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] [!INCLUDE[ssRSnoversion](../../includes/ssrsnoversion-md.md)] features and capabilities.</span></span>  
+  
+-   <span data-ttu-id="2c5db-137">Conocimientos sólidos de SOAP y [!INCLUDE[vstecwebservices](../../includes/vstecwebservices-md.md)].</span><span class="sxs-lookup"><span data-stu-id="2c5db-137">A firm understanding of SOAP and [!INCLUDE[vstecwebservices](../../includes/vstecwebservices-md.md)].</span></span>  
+  
+-   <span data-ttu-id="2c5db-138">Experiencia de desarrollo en un [!INCLUDE[dnprdnshort](../../includes/dnprdnshort-md.md)] lenguaje compatible con [!INCLUDE[msCoName](../../includes/msconame-md.md)] [!INCLUDE[csprcs](../../includes/csprcs-md.md)] , como o [!INCLUDE[msCoName](../../includes/msconame-md.md)] [!INCLUDE[vbprvb](../../includes/vbprvb-md.md)] , si piensa usar [!INCLUDE[dnprdnshort](../../includes/dnprdnshort-md.md)] como plataforma de desarrollo.</span><span class="sxs-lookup"><span data-stu-id="2c5db-138">Development experience in a [!INCLUDE[dnprdnshort](../../includes/dnprdnshort-md.md)]-compatible language such as [!INCLUDE[msCoName](../../includes/msconame-md.md)] [!INCLUDE[csprcs](../../includes/csprcs-md.md)] or [!INCLUDE[msCoName](../../includes/msconame-md.md)] [!INCLUDE[vbprvb](../../includes/vbprvb-md.md)], if you plan to use the [!INCLUDE[dnprdnshort](../../includes/dnprdnshort-md.md)] as your development platform.</span></span>  
+  
+## <a name="see-also"></a><span data-ttu-id="2c5db-139">Consulte también</span><span class="sxs-lookup"><span data-stu-id="2c5db-139">See Also</span></span>  
+ [<span data-ttu-id="2c5db-140">Servicio web del servidor de informes</span><span class="sxs-lookup"><span data-stu-id="2c5db-140">Report Server Web Service</span></span>](../report-server-web-service/report-server-web-service.md)  
+  
+  

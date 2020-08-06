@@ -1,0 +1,50 @@
+---
+title: Transacciones de Integration Services | Microsoft Docs
+ms.custom: ''
+ms.date: 03/06/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: integration-services
+ms.topic: conceptual
+helpviewer_keywords:
+- containers [Integration Services], transactions
+- transactions [Integration Services], about transactions in packages
+- tasks [Integration Services], transactions
+- transactions [Integration Services]
+ms.assetid: 3c78bb26-ddce-4831-a5f8-09d4f4fd53cc
+author: chugugrace
+ms.author: chugu
+ms.openlocfilehash: 5c0ee195bbcb7b9779111add4c1f2349816d5441
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: es-ES
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87673148"
+---
+# <a name="integration-services-transactions"></a><span data-ttu-id="e3a2b-102">Transacciones de Integration Services</span><span class="sxs-lookup"><span data-stu-id="e3a2b-102">Integration Services Transactions</span></span>
+  <span data-ttu-id="e3a2b-103">Los paquetes utilizan transacciones para enlazar las acciones de base de datos que las tareas realizan en unidades atómicas y mantener de esta forma la integridad de los datos.</span><span class="sxs-lookup"><span data-stu-id="e3a2b-103">Packages use transactions to bind the database actions that tasks perform into atomic units, and by doing this maintain data integrity.</span></span> <span data-ttu-id="e3a2b-104">Todos los tipos de contenedor de [!INCLUDE[msCoName](../includes/msconame-md.md)] [!INCLUDE[ssISnoversion](../includes/ssisnoversion-md.md)] (los contenedores de paquetes, de bucles For y Foreach o de secuencias, así como los hosts de las tareas que encapsulan cada tarea) se pueden configurar para que usen transacciones.</span><span class="sxs-lookup"><span data-stu-id="e3a2b-104">All [!INCLUDE[msCoName](../includes/msconame-md.md)] [!INCLUDE[ssISnoversion](../includes/ssisnoversion-md.md)] container types-packages, the For Loop, Foreach Loop, and Sequence containers, and the task hosts that encapsulate each task-can be configured to use transactions.</span></span> [!INCLUDE[ssISnoversion](../includes/ssisnoversion-md.md)] <span data-ttu-id="e3a2b-105">proporciona tres opciones para configurar transacciones: **NotSupported**, **Supported**y **Required**.</span><span class="sxs-lookup"><span data-stu-id="e3a2b-105">provides three options for configuring transactions: **NotSupported**, **Supported**, and **Required**.</span></span>  
+  
+-   <span data-ttu-id="e3a2b-106">**Required** indica que el contenedor inicia una transacción, a menos que el contenedor principal ya haya iniciado otra.</span><span class="sxs-lookup"><span data-stu-id="e3a2b-106">**Required** indicates that the container starts a transaction, unless one is already started by its parent container.</span></span> <span data-ttu-id="e3a2b-107">Si ya existe una transacción, el contenedor la combina.</span><span class="sxs-lookup"><span data-stu-id="e3a2b-107">If a transaction already exists, the container joins the transaction.</span></span> <span data-ttu-id="e3a2b-108">Por ejemplo, si un paquete que no está configurado para admitir transacciones, incluye un contenedor de secuencias que utiliza la opción **Required** , el contenedor de secuencias iniciará su propia transacción.</span><span class="sxs-lookup"><span data-stu-id="e3a2b-108">For example, if a package that is not configured to support transactions includes a Sequence container that uses the **Required** option, the Sequence container would start its own transaction.</span></span> <span data-ttu-id="e3a2b-109">Si el paquete se hubiera configurado para utilizar la opción **Required** , el contenedor de secuencias combinaría la transacción del paquete.</span><span class="sxs-lookup"><span data-stu-id="e3a2b-109">If the package were configured to use the **Required** option, the Sequence container would join the package transaction.</span></span>  
+  
+-   <span data-ttu-id="e3a2b-110">**Supported** indica que el contenedor no inicia una transacción, pero sí combina cualquier transacción iniciada por el contenedor principal.</span><span class="sxs-lookup"><span data-stu-id="e3a2b-110">**Supported** indicates that the container does not start a transaction, but joins any transaction started by its parent container.</span></span> <span data-ttu-id="e3a2b-111">Por ejemplo, si un paquete con cuatro tareas Ejecutar SQL inicia una transacción y las cuatro tareas utilizan la opción **Supported** , las actualizaciones de la base de datos realizadas por las tareas Ejecutar SQL se revierten si se produce un error en cualquiera de las tareas.</span><span class="sxs-lookup"><span data-stu-id="e3a2b-111">For example, if a package with four Execute SQL tasks starts a transaction and all four tasks use the **Supported** option, the database updates performed by the Execute SQL tasks are rolled back if any task fails.</span></span> <span data-ttu-id="e3a2b-112">Si el paquete no inicia una transacción, las cuatro tareas Ejecutar SQL no estarán enlazadas por una transacción y no se revertirá ninguna actualización de base de datos, excepto las realizadas por la tarea que tuvo el error.</span><span class="sxs-lookup"><span data-stu-id="e3a2b-112">If the package does not start a transaction, the four Execute SQL tasks are not bound by a transaction, and no database updates except the ones performed by the failed task are rolled back.</span></span>  
+  
+-   <span data-ttu-id="e3a2b-113">**NotSupported** indica que el contenedor no inicia una transacción ni combina una transacción existente.</span><span class="sxs-lookup"><span data-stu-id="e3a2b-113">**NotSupported** indicates that the container does not start a transaction or join an existing transaction.</span></span> <span data-ttu-id="e3a2b-114">Una transacción iniciada por un contenedor principal no afecta a los contenedores secundarios configurados de manera que no admitan transacciones.</span><span class="sxs-lookup"><span data-stu-id="e3a2b-114">A transaction started by a parent container does not affect child containers that have been configured to not support transactions.</span></span> <span data-ttu-id="e3a2b-115">Por ejemplo, si un paquete está configurado para iniciar una transacción y un contenedor de bucles For del paquete utiliza la opción **NotSupported** , no se revertirá ninguna de las tareas del contenedor de bucles For aunque genere un error.</span><span class="sxs-lookup"><span data-stu-id="e3a2b-115">For example, if a package is configured to start a transaction and a For Loop container in the package uses the **NotSupported** option, none of the tasks in the For Loop can roll back if they fail.</span></span>  
+  
+ <span data-ttu-id="e3a2b-116">Para configurar transacciones, hay que establecer la propiedad TransactionOption en el contenedor.</span><span class="sxs-lookup"><span data-stu-id="e3a2b-116">You configure transactions by setting the TransactionOption property on the container.</span></span> <span data-ttu-id="e3a2b-117">Puede establecer esta propiedad en la ventana **Propiedades** de [!INCLUDE[ssBIDevStudioFull](../includes/ssbidevstudiofull-md.md)]o mediante programación.</span><span class="sxs-lookup"><span data-stu-id="e3a2b-117">You can set this property by using the **Properties** window in [!INCLUDE[ssBIDevStudioFull](../includes/ssbidevstudiofull-md.md)], or you can set the property programmatically.</span></span>  
+  
+> [!NOTE]  
+>  <span data-ttu-id="e3a2b-118">La propiedad `TransactionOption` tiene influencia sobre el hecho de que el valor de la propiedad `IsolationLevel` solicitada por un contenedor se aplique o no.</span><span class="sxs-lookup"><span data-stu-id="e3a2b-118">The `TransactionOption` property influences whether or not the value of the `IsolationLevel` property requested by a container is applied.</span></span> <span data-ttu-id="e3a2b-119">Para obtener más información, consulte la descripción de la `IsolationLevel` propiedad en el tema [establecer las propiedades del paquete](set-package-properties.md).</span><span class="sxs-lookup"><span data-stu-id="e3a2b-119">For more information, see the description of the `IsolationLevel` property in the topic, [Setting Package Properties](set-package-properties.md).</span></span>  
+  
+### <a name="to-configure-a-package-to-use-transactions"></a><span data-ttu-id="e3a2b-120">Para configurar un paquete para que utilice transacciones</span><span class="sxs-lookup"><span data-stu-id="e3a2b-120">To configure a package to use transactions</span></span>  
+  
+-   [<span data-ttu-id="e3a2b-121">Configurar un paquete para el uso de transacciones</span><span class="sxs-lookup"><span data-stu-id="e3a2b-121">Configure a Package to Use Transactions</span></span>](../relational-databases/native-client-ole-db-transactions/transactions.md)  
+  
+## <a name="external-resources"></a><span data-ttu-id="e3a2b-122">Recursos externos</span><span class="sxs-lookup"><span data-stu-id="e3a2b-122">External Resources</span></span>  
+  
+-   <span data-ttu-id="e3a2b-123">Entrada de blog, [Cómo usar transacciones en SQL Server Integration Services (SSIS)](https://go.microsoft.com/fwlink/?LinkId=157783)(en inglés), en www.mssqltips.com</span><span class="sxs-lookup"><span data-stu-id="e3a2b-123">Blog entry, [How to Use Transactions in SQL Server Integration Services SSIS](https://go.microsoft.com/fwlink/?LinkId=157783), on www.mssqltips.com</span></span>  
+  
+## <a name="see-also"></a><span data-ttu-id="e3a2b-124">Consulte también</span><span class="sxs-lookup"><span data-stu-id="e3a2b-124">See Also</span></span>  
+ <span data-ttu-id="e3a2b-125">[Transacciones heredadas](../../2014/integration-services/inherited-transactions.md) </span><span class="sxs-lookup"><span data-stu-id="e3a2b-125">[Inherited Transactions](../../2014/integration-services/inherited-transactions.md) </span></span>  
+ [<span data-ttu-id="e3a2b-126">Varias transacciones</span><span class="sxs-lookup"><span data-stu-id="e3a2b-126">Multiple Transactions</span></span>](../../2014/integration-services/multiple-transactions.md)  
+  
+  

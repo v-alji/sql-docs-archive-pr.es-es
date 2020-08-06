@@ -1,0 +1,81 @@
+---
+title: Propiedades de SQL Server (pestaña parámetros de inicio) | Microsoft Docs
+ms.custom: ''
+ms.date: 06/13/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: configuration
+ms.topic: conceptual
+ms.assetid: 16942624-5374-446c-8de4-ee6ed34d6e94
+author: stevestein
+ms.author: sstein
+ms.openlocfilehash: 66c4b71433face008ba78af93579cf175fb4bed4
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: es-ES
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87672328"
+---
+# <a name="sql-server-properties-startup-parameters-tab"></a><span data-ttu-id="9b1d0-102">Propiedades de SQL Server (pestaña Parámetros de inicio)</span><span class="sxs-lookup"><span data-stu-id="9b1d0-102">SQL Server Properties (Startup Parameters Tab)</span></span>
+  <span data-ttu-id="9b1d0-103">Utilice este cuadro de diálogo para agregar o quitar parámetros de inicio para el [!INCLUDE[ssDE](../../includes/ssde-md.md)].</span><span class="sxs-lookup"><span data-stu-id="9b1d0-103">Use this dialog box to add or remove startup parameters for the [!INCLUDE[ssDE](../../includes/ssde-md.md)].</span></span> <span data-ttu-id="9b1d0-104">Los parámetros de inicio pueden tener una gran influencia en el rendimiento del [!INCLUDE[ssDE](../../includes/ssde-md.md)].</span><span class="sxs-lookup"><span data-stu-id="9b1d0-104">Startup parameters can have a large effect on the [!INCLUDE[ssDE](../../includes/ssde-md.md)] performance.</span></span> <span data-ttu-id="9b1d0-105">Antes de agregar o cambiar los parámetros de inicio, vea el tema "Usar las opciones de inicio del servicio [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] " en los Libros en pantalla de [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] .</span><span class="sxs-lookup"><span data-stu-id="9b1d0-105">Before adding or changing startup parameters, see the topic "Using the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Service Startup Options" in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Books Online.</span></span>  
+  
+## <a name="options"></a><span data-ttu-id="9b1d0-106">Opciones</span><span class="sxs-lookup"><span data-stu-id="9b1d0-106">Options</span></span>  
+ <span data-ttu-id="9b1d0-107">**Especifique un parámetro de inicio**</span><span class="sxs-lookup"><span data-stu-id="9b1d0-107">**Specify a startup parameter**</span></span>  
+ <span data-ttu-id="9b1d0-108">Para agregar un parámetro, escríbalo y haga clic en **Agregar**.</span><span class="sxs-lookup"><span data-stu-id="9b1d0-108">To add a parameter, type the parameter, and then click **Add**.</span></span>  
+  
+ <span data-ttu-id="9b1d0-109">Para modificar uno de los parámetros necesarios, seleccione el parámetro en el cuadro **Parámetros existentes** , cambie los valores en el cuadro **Especifique un parámetro de inicio** y, a continuación, haga clic en **Actualizar**.</span><span class="sxs-lookup"><span data-stu-id="9b1d0-109">To modify one of the required parameters, select the parameter in the **Existing parameters** box, change the values in the **Specify a startup parameter** box, and then click **Update**.</span></span>  
+  
+ <span data-ttu-id="9b1d0-110">**Parámetros existentes**</span><span class="sxs-lookup"><span data-stu-id="9b1d0-110">**Existing parameters**</span></span>  
+ <span data-ttu-id="9b1d0-111">Para quitar un parámetro, selecciónelo y haga clic en **Quitar**.</span><span class="sxs-lookup"><span data-stu-id="9b1d0-111">To remove a parameter, select a parameter, and then click **Remove**.</span></span>  
+  
+## <a name="parameter-format"></a><span data-ttu-id="9b1d0-112">Formato de parámetros</span><span class="sxs-lookup"><span data-stu-id="9b1d0-112">Parameter Format</span></span>  
+ <span data-ttu-id="9b1d0-113">No incluya un separador entre parámetros.</span><span class="sxs-lookup"><span data-stu-id="9b1d0-113">Do not enter a separator between parameters.</span></span> [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] <span data-ttu-id="9b1d0-114">lo agrega automáticamente.</span><span class="sxs-lookup"><span data-stu-id="9b1d0-114">Configuration Manager automatically adds the separator.</span></span> [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] <span data-ttu-id="9b1d0-115">aplica los requisitos de parámetro siguientes.</span><span class="sxs-lookup"><span data-stu-id="9b1d0-115">Configuration Manager enforces the following parameter requirements.</span></span>  
+  
+-   <span data-ttu-id="9b1d0-116">Los espacios iniciales y finales se recortan de los parámetros de inicio.</span><span class="sxs-lookup"><span data-stu-id="9b1d0-116">Leading and trailing spaces are trimmed from any startup parameter.</span></span>  
+  
+-   <span data-ttu-id="9b1d0-117">Todos los parámetros de inicio empiezan con un guion (–) y el segundo valor es una letra.</span><span class="sxs-lookup"><span data-stu-id="9b1d0-117">All startup parameters start with a - (dash) and the second value is a letter.</span></span>  
+  
+## <a name="required-parameters"></a><span data-ttu-id="9b1d0-118">Parámetros obligatorios</span><span class="sxs-lookup"><span data-stu-id="9b1d0-118">Required Parameters</span></span>  
+ <span data-ttu-id="9b1d0-119">Los parámetros siguientes son necesarios.</span><span class="sxs-lookup"><span data-stu-id="9b1d0-119">The following parameters are required.</span></span> <span data-ttu-id="9b1d0-120">Se pueden cambiar pero no quitar.</span><span class="sxs-lookup"><span data-stu-id="9b1d0-120">They can be changed but not removed.</span></span>  
+  
+-   <span data-ttu-id="9b1d0-121">-d es la ruta de acceso al archivo **master.mdf** (el archivo de datos de la base de datos maestra).</span><span class="sxs-lookup"><span data-stu-id="9b1d0-121">-d is the path of the **master.mdf** file (the master database data file).</span></span>  
+  
+-   <span data-ttu-id="9b1d0-122">-l es la ruta de acceso al archivo **master.ldf** (el archivo de registro de la base de datos maestra).</span><span class="sxs-lookup"><span data-stu-id="9b1d0-122">-l is the path of the **master.ldf** file (the master database log file).</span></span>  
+  
+-   <span data-ttu-id="9b1d0-123">-e es la ruta de acceso de los archivos de registro de errores de [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] .</span><span class="sxs-lookup"><span data-stu-id="9b1d0-123">-e is the path of the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] error log files.</span></span>  
+  
+> [!CAUTION]  
+>  <span data-ttu-id="9b1d0-124">Si los parámetros de ruta de acceso al archivo son incorrectos, es posible que [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] no se inicie.</span><span class="sxs-lookup"><span data-stu-id="9b1d0-124">If the file path parameters are incorrect [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] might not start.</span></span>  
+  
+ <span data-ttu-id="9b1d0-125">Para obtener más información sobre cómo mover la base de datos maestra, vea el tema "Mover bases de datos del sistema" en los Libros en pantalla de [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] .</span><span class="sxs-lookup"><span data-stu-id="9b1d0-125">For more information about how to move the master database, see the topic "Moving System Databases" in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Books Online.</span></span>  
+  
+## <a name="optional-parameters"></a><span data-ttu-id="9b1d0-126">Parámetros opcionales</span><span class="sxs-lookup"><span data-stu-id="9b1d0-126">Optional Parameters</span></span>  
+ <span data-ttu-id="9b1d0-127">Todos los parámetros de inicio admitidos se describen en el tema "Usar las opciones de inicio del servicio [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]" en los Libros en pantalla de [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].</span><span class="sxs-lookup"><span data-stu-id="9b1d0-127">All of the supported startup parameters are described in the topic "Using the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Service Startup Options," in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Books Online.</span></span> <span data-ttu-id="9b1d0-128">Un parámetro de inicio de -T*n.º de seguimiento* indica que una instancia de [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] ha de iniciarse con una marca de seguimiento especificada (*n.º de seguimiento*) activa.</span><span class="sxs-lookup"><span data-stu-id="9b1d0-128">A startup parameter of -T*trace#* indicates that an instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] should be started with a specified trace flag (*trace#*) in effect.</span></span> <span data-ttu-id="9b1d0-129">Las marcas de seguimiento se utilizan para iniciar el servidor con un comportamiento distinto del habitual.</span><span class="sxs-lookup"><span data-stu-id="9b1d0-129">Trace flags are used to start the server with nonstandard behavior.</span></span> <span data-ttu-id="9b1d0-130">Para más información sobre las marcas de seguimiento, vea el tema "Marcas de seguimiento ([!INCLUDE[tsql](../../includes/tsql-md.md)])" en los Libros en pantalla de [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] .</span><span class="sxs-lookup"><span data-stu-id="9b1d0-130">For more information about trace flags, see the topic "Trace Flags ([!INCLUDE[tsql](../../includes/tsql-md.md)])" in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Books Online.</span></span>  
+  
+> [!CAUTION]  
+>  <span data-ttu-id="9b1d0-131">Puede ver parámetros de inicio y marcas de seguimiento sin documentar adicionales en Internet.</span><span class="sxs-lookup"><span data-stu-id="9b1d0-131">You might see additional undocumented startup parameters and trace flags described on the Internet.</span></span> <span data-ttu-id="9b1d0-132">Los parámetros de inicio y marcas de seguimiento sin documentar se crean para resolver problemas poco habituales o forzar determinadas condiciones requeridas para las pruebas.</span><span class="sxs-lookup"><span data-stu-id="9b1d0-132">Undocumented startup parameters and trace flags are created to address uncommon problems or to force certain conditions required for testing.</span></span> <span data-ttu-id="9b1d0-133">El uso de parámetros de inicio sin documentar puede proporcionar resultados inesperados.</span><span class="sxs-lookup"><span data-stu-id="9b1d0-133">Using undocumented startup parameters can have unexpected results.</span></span> <span data-ttu-id="9b1d0-134">No utilice parámetros sin documentar a menos que estén dirigidos por los servicios de soporte al cliente de Microsoft.</span><span class="sxs-lookup"><span data-stu-id="9b1d0-134">Do not use undocumented parameters unless directed by Microsoft Customer Support Services.</span></span>  
+  
+ <span data-ttu-id="9b1d0-135">La lista siguiente describe algunos parámetros opcionales comunes.</span><span class="sxs-lookup"><span data-stu-id="9b1d0-135">The following list describes some common optional parameters.</span></span>  
+  
+|<span data-ttu-id="9b1d0-136">Parámetro</span><span class="sxs-lookup"><span data-stu-id="9b1d0-136">Parameter</span></span>|<span data-ttu-id="9b1d0-137">Descripción breve</span><span class="sxs-lookup"><span data-stu-id="9b1d0-137">Short description</span></span>|  
+|---------------|-----------------------|  
+|<span data-ttu-id="9b1d0-138">-M</span><span class="sxs-lookup"><span data-stu-id="9b1d0-138">-m</span></span>|<span data-ttu-id="9b1d0-139">Inicia una instancia de [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] en modo de usuario único.</span><span class="sxs-lookup"><span data-stu-id="9b1d0-139">Starts an instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] in single-user mode.</span></span>|  
+|<span data-ttu-id="9b1d0-140">-T1204</span><span class="sxs-lookup"><span data-stu-id="9b1d0-140">-T1204</span></span>|<span data-ttu-id="9b1d0-141">Devuelve los recursos y los tipos de bloqueos que participan en un interbloqueo, además del comando actual afectado.</span><span class="sxs-lookup"><span data-stu-id="9b1d0-141">Returns the resources and types of locks participating in a deadlock and also the current command affected.</span></span>|  
+|<span data-ttu-id="9b1d0-142">-T1224</span><span class="sxs-lookup"><span data-stu-id="9b1d0-142">-T1224</span></span>|<span data-ttu-id="9b1d0-143">Deshabilita la extensión de bloqueo en función del número de bloqueos.</span><span class="sxs-lookup"><span data-stu-id="9b1d0-143">Disables lock escalation based on the number of locks.</span></span>|  
+|<span data-ttu-id="9b1d0-144">-T3608</span><span class="sxs-lookup"><span data-stu-id="9b1d0-144">-T3608</span></span>|<span data-ttu-id="9b1d0-145">Evita que [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] se inicie automáticamente y recupere bases de datos excepto la base de datos maestra.</span><span class="sxs-lookup"><span data-stu-id="9b1d0-145">Prevents [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] from automatically starting and recovering any database except the master database.</span></span>|  
+|<span data-ttu-id="9b1d0-146">-T7806</span><span class="sxs-lookup"><span data-stu-id="9b1d0-146">-T7806</span></span>|<span data-ttu-id="9b1d0-147">Habilita una conexión de administrador dedicada (DAC) en [!INCLUDE[ssExpress](../../includes/ssexpress-md.md)].</span><span class="sxs-lookup"><span data-stu-id="9b1d0-147">Enables a dedicated administrator connection (DAC) on [!INCLUDE[ssExpress](../../includes/ssexpress-md.md)].</span></span>|  
+  
+> [!CAUTION]  
+>  <span data-ttu-id="9b1d0-148">Algunos parámetros opcionales pueden cambiar el comportamiento del servidor y afectar al rendimiento.</span><span class="sxs-lookup"><span data-stu-id="9b1d0-148">Some optional parameters can change server behavior and may affect performance.</span></span>  
+  
+## <a name="permissions"></a><span data-ttu-id="9b1d0-149">Permisos</span><span class="sxs-lookup"><span data-stu-id="9b1d0-149">Permissions</span></span>  
+ <span data-ttu-id="9b1d0-150">El uso de esta página está restringido a los usuarios que pueden cambiar las entradas relacionadas en el Registro.</span><span class="sxs-lookup"><span data-stu-id="9b1d0-150">Use of this page is restricted to users who can change the related entries in the registry.</span></span> <span data-ttu-id="9b1d0-151">Esto incluye a los usuarios siguientes.</span><span class="sxs-lookup"><span data-stu-id="9b1d0-151">This includes the following users.</span></span>  
+  
+-   <span data-ttu-id="9b1d0-152">Miembros del grupo local de administradores.</span><span class="sxs-lookup"><span data-stu-id="9b1d0-152">Members of the local administrators group.</span></span>  
+  
+-   <span data-ttu-id="9b1d0-153">La cuenta de dominio utilizada por [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)], si el [!INCLUDE[ssDE](../../includes/ssde-md.md)] está configurado para ejecutarse bajo una cuenta de dominio.</span><span class="sxs-lookup"><span data-stu-id="9b1d0-153">The domain account that is used by [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)], if the [!INCLUDE[ssDE](../../includes/ssde-md.md)] is configured to run under a domain account.</span></span>  
+  
+## <a name="books-online-references"></a><span data-ttu-id="9b1d0-154">Referencias de los Libros en pantalla</span><span class="sxs-lookup"><span data-stu-id="9b1d0-154">Books Online References</span></span>  
+ <span data-ttu-id="9b1d0-155">Para más información sobre los parámetros de inicio de [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] , vea "Cómo configurar opciones de inicio del servidor (Administrador de configuración de[!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] )" en los Libros en pantalla de [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] .</span><span class="sxs-lookup"><span data-stu-id="9b1d0-155">For additional information about [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] startup parameters, see "How to: Configure Server Startup Options ([!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Configuration Manager)" in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Books Online.</span></span>  
+  
+  

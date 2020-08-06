@@ -1,0 +1,42 @@
+---
+title: Solo los usuarios de sysadmin pueden escribir archivos de registro de pasos de trabajo en el sistema de archivos | Microsoft Docs
+ms.custom: ''
+ms.date: 06/13/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: database-engine
+ms.topic: conceptual
+helpviewer_keywords:
+- job step log files [SQL Server Agent]
+- log files [SQL Server Agent]
+- writing job step log files
+ms.assetid: d26a7cef-1a60-4c95-b9df-f8b4fec59f9b
+author: mashamsft
+ms.author: mathoma
+ms.openlocfilehash: 9e2bf5095ac1e6b67f6c6f3f87444879913916e1
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: es-ES
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87673443"
+---
+# <a name="only-sysadmin-users-can-write-job-step-log-files-to-the-file-system"></a><span data-ttu-id="860b6-102">Los administradores del sistema son los únicos usuarios que pueden escribir archivos de registro de paso de trabajo en el sistema de archivos</span><span class="sxs-lookup"><span data-stu-id="860b6-102">Only sysadmin users can write job step log files to the file system</span></span>
+  [!INCLUDE[ssCurrent](../../includes/sscurrent-md.md)] <span data-ttu-id="860b6-103">escribe opcionalmente un registro para cada paso de trabajo.</span><span class="sxs-lookup"><span data-stu-id="860b6-103">optionally writes a log for each job step.</span></span>  
+  
+## <a name="component"></a><span data-ttu-id="860b6-104">Componente</span><span class="sxs-lookup"><span data-stu-id="860b6-104">Component</span></span>  
+ <span data-ttu-id="860b6-105">e[!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]</span><span class="sxs-lookup"><span data-stu-id="860b6-105">[!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Agent</span></span>  
+  
+## <a name="description"></a><span data-ttu-id="860b6-106">Descripción</span><span class="sxs-lookup"><span data-stu-id="860b6-106">Description</span></span>  
+ <span data-ttu-id="860b6-107">En [!INCLUDE[ssVersion2000](../../includes/ssversion2000-md.md)] , [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] el agente puede escribir registros en el sistema de archivos para los trabajos que son propiedad de los miembros del rol fijo de servidor **sysadmin** .</span><span class="sxs-lookup"><span data-stu-id="860b6-107">In [!INCLUDE[ssVersion2000](../../includes/ssversion2000-md.md)], [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Agent can write logs to the file system for jobs that are owned by members of the **sysadmin** fixed server role.</span></span> <span data-ttu-id="860b6-108">Si el propietario del trabajo no es miembro del rol **sysadmin** y la cuenta de proxy está habilitada, el [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] agente puede escribir registros en el sistema de archivos mediante las credenciales de la cuenta de proxy.</span><span class="sxs-lookup"><span data-stu-id="860b6-108">If the job owner is not a member of the **sysadmin** role and if the proxy account is enabled, [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Agent can write logs to the file system by using the credentials of the proxy account.</span></span>  
+  
+ <span data-ttu-id="860b6-109">Después de la actualización, los trabajos que pertenecen a usuarios que no son miembros del rol fijo de servidor **sysadmin** ya no pueden escribir registros en el sistema de archivos.</span><span class="sxs-lookup"><span data-stu-id="860b6-109">After you upgrade, jobs that are owned by users who are not members of the **sysadmin** fixed server role can no longer write logs to the file system.</span></span> <span data-ttu-id="860b6-110">En su lugar, estos usuarios pueden seleccionar la opción de escribir los registros en una tabla de la base de datos **msdb** .</span><span class="sxs-lookup"><span data-stu-id="860b6-110">Instead, these users can select the option to write their logs to a table in the **msdb** database.</span></span> <span data-ttu-id="860b6-111">Los miembros del rol **sysadmin** pueden seguir escribiendo archivos de registro en el sistema de archivos.</span><span class="sxs-lookup"><span data-stu-id="860b6-111">Members of the **sysadmin** role can still write log files to the file system.</span></span>  
+  
+## <a name="corrective-action"></a><span data-ttu-id="860b6-112">Acción correctora</span><span class="sxs-lookup"><span data-stu-id="860b6-112">Corrective Action</span></span>  
+ <span data-ttu-id="860b6-113">Después de la actualización, los trabajos que pertenecen a usuarios que no son miembros del rol **sysadmin** seguirán ejecutándose, pero no se crearán los registros.</span><span class="sxs-lookup"><span data-stu-id="860b6-113">After you upgrade, jobs that are owned by users who are not members of the **sysadmin** role will continue to run, but logs will not be created.</span></span> <span data-ttu-id="860b6-114">Para registrar los pasos de trabajo en una tabla, los usuarios que no sean miembros del rol **sysadmin** deben actualizar manualmente sus trabajos.</span><span class="sxs-lookup"><span data-stu-id="860b6-114">To log job steps to a table, users who are not members of the **sysadmin** role must manually update their jobs.</span></span>  
+  
+ <span data-ttu-id="860b6-115">Para obtener más información, vea los temas "Crear trabajos", "Crear pasos de trabajo" y "Controlar varios pasos del trabajo" en los Libros en pantalla de [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].</span><span class="sxs-lookup"><span data-stu-id="860b6-115">For more information, see the topics "Creating Jobs," "Creating Job Steps," and "Handling Multiple Job Steps" in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Books Online.</span></span>  
+  
+## <a name="see-also"></a><span data-ttu-id="860b6-116">Consulte también</span><span class="sxs-lookup"><span data-stu-id="860b6-116">See Also</span></span>  
+ [<span data-ttu-id="860b6-117">Problemas de actualización del Agente SQL Server</span><span class="sxs-lookup"><span data-stu-id="860b6-117">SQL Server Agent Upgrade Issues</span></span>](../../../2014/sql-server/install/sql-server-agent-upgrade-issues.md)  
+  
+  
