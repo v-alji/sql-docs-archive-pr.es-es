@@ -1,0 +1,73 @@
+---
+title: Transformación Exportar columna | Microsoft Docs
+ms.custom: ''
+ms.date: 03/06/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: integration-services
+ms.topic: conceptual
+f1_keywords:
+- sql12.dts.designer.exportcolumntrans.f1
+helpviewer_keywords:
+- exporting data
+- append options [Integration Services]
+- Export Column transformation [Integration Services]
+- columns [Integration Services], exporting
+- inserting data
+- truncate options [Integration Services]
+ms.assetid: 678d2dfc-e40c-4fbb-b2cc-42fffc44478a
+author: chugugrace
+ms.author: chugu
+ms.openlocfilehash: a7ed2bef02d75b72870514e2333d2fa58720fb60
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: es-ES
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87669775"
+---
+# <a name="export-column-transformation"></a><span data-ttu-id="b33d9-102">Transformación Exportar columna</span><span class="sxs-lookup"><span data-stu-id="b33d9-102">Export Column Transformation</span></span>
+  <span data-ttu-id="b33d9-103">La transformación Exportar columna lee datos de un flujo de datos e inserta dichos datos en un archivo.</span><span class="sxs-lookup"><span data-stu-id="b33d9-103">The Export Column transformation reads data in a data flow and inserts the data into a file.</span></span> <span data-ttu-id="b33d9-104">Por ejemplo, si el flujo de datos contiene información de productos, como una foto de cada producto, puede usar la transformación Exportar columna para guardar las imágenes en archivos.</span><span class="sxs-lookup"><span data-stu-id="b33d9-104">For example, if the data flow contains product information, such as a picture of each product, you could use the Export Column transformation to save the images to files.</span></span>  
+  
+## <a name="append-and-truncate-options"></a><span data-ttu-id="b33d9-105">Opciones de anexar y truncar</span><span class="sxs-lookup"><span data-stu-id="b33d9-105">Append and Truncate Options</span></span>  
+ <span data-ttu-id="b33d9-106">En la tabla siguiente se describe cómo afectan a los resultados las opciones para anexar y truncar.</span><span class="sxs-lookup"><span data-stu-id="b33d9-106">The following table describes how the settings for the append and truncate options affect results.</span></span>  
+  
+|<span data-ttu-id="b33d9-107">Append</span><span class="sxs-lookup"><span data-stu-id="b33d9-107">Append</span></span>|<span data-ttu-id="b33d9-108">Truncate</span><span class="sxs-lookup"><span data-stu-id="b33d9-108">Truncate</span></span>|<span data-ttu-id="b33d9-109">El archivo existe</span><span class="sxs-lookup"><span data-stu-id="b33d9-109">File exists</span></span>|<span data-ttu-id="b33d9-110">Results</span><span class="sxs-lookup"><span data-stu-id="b33d9-110">Results</span></span>|  
+|------------|--------------|-----------------|-------------|  
+|<span data-ttu-id="b33d9-111">False</span><span class="sxs-lookup"><span data-stu-id="b33d9-111">False</span></span>|<span data-ttu-id="b33d9-112">False</span><span class="sxs-lookup"><span data-stu-id="b33d9-112">False</span></span>|<span data-ttu-id="b33d9-113">No</span><span class="sxs-lookup"><span data-stu-id="b33d9-113">No</span></span>|<span data-ttu-id="b33d9-114">La transformación crea un archivo nuevo y escribe los datos en el archivo.</span><span class="sxs-lookup"><span data-stu-id="b33d9-114">The transformation creates a new file and writes the data to the file.</span></span>|  
+|<span data-ttu-id="b33d9-115">True</span><span class="sxs-lookup"><span data-stu-id="b33d9-115">True</span></span>|<span data-ttu-id="b33d9-116">False</span><span class="sxs-lookup"><span data-stu-id="b33d9-116">False</span></span>|<span data-ttu-id="b33d9-117">No</span><span class="sxs-lookup"><span data-stu-id="b33d9-117">No</span></span>|<span data-ttu-id="b33d9-118">La transformación crea un archivo nuevo y escribe los datos en el archivo.</span><span class="sxs-lookup"><span data-stu-id="b33d9-118">The transformation creates a new file and writes the data to the file.</span></span>|  
+|<span data-ttu-id="b33d9-119">False</span><span class="sxs-lookup"><span data-stu-id="b33d9-119">False</span></span>|<span data-ttu-id="b33d9-120">True</span><span class="sxs-lookup"><span data-stu-id="b33d9-120">True</span></span>|<span data-ttu-id="b33d9-121">No</span><span class="sxs-lookup"><span data-stu-id="b33d9-121">No</span></span>|<span data-ttu-id="b33d9-122">La transformación crea un archivo nuevo y escribe los datos en el archivo.</span><span class="sxs-lookup"><span data-stu-id="b33d9-122">The transformation creates a new file and writes the data to the file.</span></span>|  
+|<span data-ttu-id="b33d9-123">True</span><span class="sxs-lookup"><span data-stu-id="b33d9-123">True</span></span>|<span data-ttu-id="b33d9-124">True</span><span class="sxs-lookup"><span data-stu-id="b33d9-124">True</span></span>|<span data-ttu-id="b33d9-125">No</span><span class="sxs-lookup"><span data-stu-id="b33d9-125">No</span></span>|<span data-ttu-id="b33d9-126">Se produce un error al validar la transformación en tiempo de diseño.</span><span class="sxs-lookup"><span data-stu-id="b33d9-126">The transformation fails design time validation.</span></span> <span data-ttu-id="b33d9-127">No se permite establecer ambas propiedades en `true`.</span><span class="sxs-lookup"><span data-stu-id="b33d9-127">It is not valid to set both properties to `true`.</span></span>|  
+|<span data-ttu-id="b33d9-128">False</span><span class="sxs-lookup"><span data-stu-id="b33d9-128">False</span></span>|<span data-ttu-id="b33d9-129">False</span><span class="sxs-lookup"><span data-stu-id="b33d9-129">False</span></span>|<span data-ttu-id="b33d9-130">Sí</span><span class="sxs-lookup"><span data-stu-id="b33d9-130">Yes</span></span>|<span data-ttu-id="b33d9-131">Se produce un error en tiempo de ejecución.</span><span class="sxs-lookup"><span data-stu-id="b33d9-131">A run-time error occurs.</span></span> <span data-ttu-id="b33d9-132">El archivo existe, pero la transformación no puede escribir en él.</span><span class="sxs-lookup"><span data-stu-id="b33d9-132">The file exists, but the transformation cannot write to it.</span></span>|  
+|<span data-ttu-id="b33d9-133">False</span><span class="sxs-lookup"><span data-stu-id="b33d9-133">False</span></span>|<span data-ttu-id="b33d9-134">True</span><span class="sxs-lookup"><span data-stu-id="b33d9-134">True</span></span>|<span data-ttu-id="b33d9-135">Sí</span><span class="sxs-lookup"><span data-stu-id="b33d9-135">Yes</span></span>|<span data-ttu-id="b33d9-136">La transformación elimina y vuelve a crear el archivo, y escribe los datos en el archivo.</span><span class="sxs-lookup"><span data-stu-id="b33d9-136">The transformation deletes and re-creates the file and writes the data to the file.</span></span>|  
+|<span data-ttu-id="b33d9-137">True</span><span class="sxs-lookup"><span data-stu-id="b33d9-137">True</span></span>|<span data-ttu-id="b33d9-138">False</span><span class="sxs-lookup"><span data-stu-id="b33d9-138">False</span></span>|<span data-ttu-id="b33d9-139">Sí</span><span class="sxs-lookup"><span data-stu-id="b33d9-139">Yes</span></span>|<span data-ttu-id="b33d9-140">La transformación abre el archivo y escribe los datos al final del archivo.</span><span class="sxs-lookup"><span data-stu-id="b33d9-140">The transformation opens the file and writes the data at the end of the file.</span></span>|  
+|<span data-ttu-id="b33d9-141">True</span><span class="sxs-lookup"><span data-stu-id="b33d9-141">True</span></span>|<span data-ttu-id="b33d9-142">True</span><span class="sxs-lookup"><span data-stu-id="b33d9-142">True</span></span>|<span data-ttu-id="b33d9-143">Sí</span><span class="sxs-lookup"><span data-stu-id="b33d9-143">Yes</span></span>|<span data-ttu-id="b33d9-144">Se produce un error al validar la transformación en tiempo de diseño.</span><span class="sxs-lookup"><span data-stu-id="b33d9-144">The transformation fails design time validation.</span></span> <span data-ttu-id="b33d9-145">No se permite establecer ambas propiedades en `true`.</span><span class="sxs-lookup"><span data-stu-id="b33d9-145">It is not valid to set both properties to `true`.</span></span>|  
+  
+## <a name="configuration-of-the-export-column-transformation"></a><span data-ttu-id="b33d9-146">Configuración de la transformación Exportar columna</span><span class="sxs-lookup"><span data-stu-id="b33d9-146">Configuration of the Export Column Transformation</span></span>  
+ <span data-ttu-id="b33d9-147">Puede configurar la transformación Exportar columna de las maneras siguientes:</span><span class="sxs-lookup"><span data-stu-id="b33d9-147">You can configure the Export Column transformation in the following ways:</span></span>  
+  
+-   <span data-ttu-id="b33d9-148">Especificar las columnas de datos y las columnas que contienen la ruta de los archivos en los que se van a escribir los datos.</span><span class="sxs-lookup"><span data-stu-id="b33d9-148">Specify the data columns and the columns that contain the path of files to which to write the data.</span></span>  
+  
+-   <span data-ttu-id="b33d9-149">Especificar si la operación de inserción de datos anexa o trunca archivos existentes.</span><span class="sxs-lookup"><span data-stu-id="b33d9-149">Specify whether the data-insertion operation appends or truncates existing files.</span></span>  
+  
+-   <span data-ttu-id="b33d9-150">Especificar si se escribe una marca de orden de bytes (BOM) en el archivo.</span><span class="sxs-lookup"><span data-stu-id="b33d9-150">Specify whether a byte-order mark (BOM) is written to the file.</span></span>  
+  
+    > [!NOTE]  
+    >  <span data-ttu-id="b33d9-151">Solo se escribe una BOM cuando no se anexan los datos a un archivo existente y cuando los datos tienen el tipo de datos DT_NTEXT.</span><span class="sxs-lookup"><span data-stu-id="b33d9-151">A BOM is written only when the data is not appended to an existing file and the data has the DT_NTEXT data type.</span></span>  
+  
+ <span data-ttu-id="b33d9-152">La transformación utiliza pares de columnas de entrada: una columna contiene un nombre de archivo y la otra contiene datos.</span><span class="sxs-lookup"><span data-stu-id="b33d9-152">The transformation uses pairs of input columns: One column contains a file name, and the other column contains data.</span></span> <span data-ttu-id="b33d9-153">Cada fila del conjunto de datos puede especificar un archivo diferente.</span><span class="sxs-lookup"><span data-stu-id="b33d9-153">Each row in the data set can specify a different file.</span></span> <span data-ttu-id="b33d9-154">Cuando la transformación procesa una fila, los datos de dicha fila se insertan en el archivo especificado.</span><span class="sxs-lookup"><span data-stu-id="b33d9-154">As the transformation processes a row, the data is inserted into the specified file.</span></span> <span data-ttu-id="b33d9-155">En tiempo de ejecución, la transformación crea los archivos (si no existen) y después escribe los datos en dichos archivos.</span><span class="sxs-lookup"><span data-stu-id="b33d9-155">At run time, the transformation creates the files, if they do not already exist, and then the transformation writes the data to the files.</span></span> <span data-ttu-id="b33d9-156">Los datos deben tener un tipo de datos DT_TEXT, DT_NTEXT o DT_IMAGE.</span><span class="sxs-lookup"><span data-stu-id="b33d9-156">The data to be written must have a DT_TEXT, DT_NTEXT, or DT_IMAGE data type.</span></span> <span data-ttu-id="b33d9-157">Para obtener más información, vea [Integration Services Data Types](../integration-services-data-types.md).</span><span class="sxs-lookup"><span data-stu-id="b33d9-157">For more information, see [Integration Services Data Types](../integration-services-data-types.md).</span></span>  
+  
+ <span data-ttu-id="b33d9-158">Esta transformación tiene una entrada, una salida y una salida de error.</span><span class="sxs-lookup"><span data-stu-id="b33d9-158">This transformation has one input, one output, and one error output.</span></span>  
+  
+ <span data-ttu-id="b33d9-159">Puede establecer propiedades a través del Diseñador de [!INCLUDE[ssIS](../../../includes/ssis-md.md)] o mediante programación.</span><span class="sxs-lookup"><span data-stu-id="b33d9-159">You can set properties through [!INCLUDE[ssIS](../../../includes/ssis-md.md)] Designer or programmatically.</span></span>  
+  
+ <span data-ttu-id="b33d9-160">Para más información sobre las propiedades que puede establecer en el cuadro de diálogo **Editor de transformación Exportar columna**, vea [Editor de transformación Exportar columna &#40;página Columnas&#41;](../../export-column-transformation-editor-columns-page.md).</span><span class="sxs-lookup"><span data-stu-id="b33d9-160">For more information about the properties that you can set in the **Export Column Transformation Editor** dialog box, see [Export Column Transformation Editor &#40;Columns Page&#41;](../../export-column-transformation-editor-columns-page.md).</span></span>  
+  
+ <span data-ttu-id="b33d9-161">El cuadro de diálogo **Editor avanzado** indica las propiedades que se pueden establecer mediante programación.</span><span class="sxs-lookup"><span data-stu-id="b33d9-161">The **Advanced Editor** dialog box reflects the properties that can be set programmatically.</span></span> <span data-ttu-id="b33d9-162">Para obtener más información acerca de las propiedades que puede establecer a través del cuadro de diálogo **Editor avanzado** o mediante programación, haga clic en uno de los temas siguientes:</span><span class="sxs-lookup"><span data-stu-id="b33d9-162">For more information about the properties that you can set in the **Advanced Editor** dialog box or programmatically, click one of the following topics:</span></span>  
+  
+-   [<span data-ttu-id="b33d9-163">Common Properties</span><span class="sxs-lookup"><span data-stu-id="b33d9-163">Common Properties</span></span>](../../common-properties.md)  
+  
+-   [<span data-ttu-id="b33d9-164">Propiedades personalizadas de transformación</span><span class="sxs-lookup"><span data-stu-id="b33d9-164">Transformation Custom Properties</span></span>](transformation-custom-properties.md)  
+  
+ <span data-ttu-id="b33d9-165">Para más información sobre cómo establecer propiedades, vea [Establecer las propiedades de un componente de flujo de datos](../set-the-properties-of-a-data-flow-component.md).</span><span class="sxs-lookup"><span data-stu-id="b33d9-165">For more information about how to set properties, see [Set the Properties of a Data Flow Component](../set-the-properties-of-a-data-flow-component.md).</span></span>  
+  
+  
