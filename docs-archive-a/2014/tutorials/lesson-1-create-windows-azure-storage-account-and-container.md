@@ -1,0 +1,64 @@
+---
+title: 'Lección 1: crear Azure Storage cuenta y un contenedor | Microsoft Docs'
+ms.custom: ''
+ms.date: 03/06/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: security
+ms.topic: conceptual
+ms.assetid: efdbd930-cde5-41b0-90ad-58a6cc68dddc
+author: VanMSFT
+ms.author: vanto
+ms.openlocfilehash: 07167c513d2c6ed3ae0f7b431461ee3915047636
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: es-ES
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87663232"
+---
+# <a name="lesson-1-create-azure-storage-account-and-container"></a><span data-ttu-id="8cf6f-102">Lección 1: Crear la cuenta y el contenedor de Azure Storage</span><span class="sxs-lookup"><span data-stu-id="8cf6f-102">Lesson 1: Create Azure Storage Account and Container</span></span>
+  <span data-ttu-id="8cf6f-103">Antes de empezar a almacenar SQL Server archivos de datos en Azure Storage, debe crear primero una cuenta de Azure Storage y un contenedor de blobs y una firma de acceso compartido.</span><span class="sxs-lookup"><span data-stu-id="8cf6f-103">Before you can start storing SQL Server data files in Azure Storage, you must first create an Azure Storage account and a blob container, and a shared access signature.</span></span> <span data-ttu-id="8cf6f-104">La lección 1 le guía por los pasos necesarios para iniciar sesión en Azure Portal de administración, crear una cuenta de almacenamiento, un contenedor de blobs y una firma de acceso compartido.</span><span class="sxs-lookup"><span data-stu-id="8cf6f-104">Lesson 1 walks you through the steps of logging into the Azure Management Portal, creating a storage account, a blob container, and a shared access signature.</span></span>  
+  
+ <span data-ttu-id="8cf6f-105">De forma predeterminada, solo el propietario de la cuenta de almacenamiento puede obtener acceso a los blobs, las tablas y las colas dentro de esa cuenta.</span><span class="sxs-lookup"><span data-stu-id="8cf6f-105">By default, only the owner of the storage account may access blobs, tables, and queues within that account.</span></span> <span data-ttu-id="8cf6f-106">Para tener acceso a estos recursos mediante esta nueva mejora de SQL Server sin compartir la clave de acceso de la cuenta de almacenamiento, es necesario hacer lo siguiente:</span><span class="sxs-lookup"><span data-stu-id="8cf6f-106">To be able to access these resources using this new SQL Server enhancement without sharing the storage account access key, you are required to do these:</span></span>  
+  
+-   <span data-ttu-id="8cf6f-107">Establecer como privados los permisos del contenedor.</span><span class="sxs-lookup"><span data-stu-id="8cf6f-107">Set the container's permissions to private.</span></span>  
+  
+-   <span data-ttu-id="8cf6f-108">Crear una firma de acceso compartido.</span><span class="sxs-lookup"><span data-stu-id="8cf6f-108">Create a shared access signature.</span></span> <span data-ttu-id="8cf6f-109">Esto le permite delegar el acceso restringido a un contenedor, un blob, una tabla o un recurso de cola especificando el intervalo para el que los recursos están disponibles y los permisos que un cliente tendrá en él.</span><span class="sxs-lookup"><span data-stu-id="8cf6f-109">It enables you to delegate restricted access to a container, blob, table, or queue resource by specifying the interval for which the resources are available and the permissions that a client will have to it.</span></span>  
+  
+-   <span data-ttu-id="8cf6f-110">Utilice una directiva de acceso almacenada para administrar las firmas de acceso compartido de un contenedor o sus blobs.</span><span class="sxs-lookup"><span data-stu-id="8cf6f-110">Use a stored access policy to manage shared access signatures for a container or its blobs.</span></span> <span data-ttu-id="8cf6f-111">La directiva de acceso almacenado le ofrece una medida adicional de control sobre sus firmas de acceso compartido y también proporciona medios directos para revocarlas.</span><span class="sxs-lookup"><span data-stu-id="8cf6f-111">The stored access policy gives you an additional measure of control over your shared access signatures and also provides a straightforward means to revoke them.</span></span>  
+  
+ <span data-ttu-id="8cf6f-112">Para obtener más información, vea [administrar el acceso a recursos de Azure Storage](https://msdn.microsoft.com/library/windowsazure/ee393343.aspx).</span><span class="sxs-lookup"><span data-stu-id="8cf6f-112">For more information, see [Manage Access to Azure Storage Resources](https://msdn.microsoft.com/library/windowsazure/ee393343.aspx).</span></span>  
+  
+## <a name="create-storage-account"></a><span data-ttu-id="8cf6f-113">Crear cuenta de almacenamiento</span><span class="sxs-lookup"><span data-stu-id="8cf6f-113">Create Storage Account</span></span>  
+ <span data-ttu-id="8cf6f-114">Para crear una cuenta de almacenamiento en Azure Portal de administración, siga estos pasos:</span><span class="sxs-lookup"><span data-stu-id="8cf6f-114">To create a storage account on the Azure Management Portal, follow these steps:</span></span>  
+  
+1.  <span data-ttu-id="8cf6f-115">Inicie sesión en el [portal de administración de Azure](https://manage.windowsazure.com) con su cuenta.</span><span class="sxs-lookup"><span data-stu-id="8cf6f-115">Log in to the [Azure Management Portal](https://manage.windowsazure.com) using your account.</span></span> <span data-ttu-id="8cf6f-116">Si no tiene una cuenta de Azure, visite [Evaluación gratuita de Azure](https://www.windowsazure.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="8cf6f-116">If you do not have an Azure account, visit [Azure free trial](https://www.windowsazure.com/pricing/free-trial/).</span></span>  
+  
+     <span data-ttu-id="8cf6f-117">![SQL 14 CTP2](../../2014/tutorials/media/ss-was-tutlesson-1-1.gif "SQL 14 CTP2")</span><span class="sxs-lookup"><span data-stu-id="8cf6f-117">![SQL 14 CTP2](../../2014/tutorials/media/ss-was-tutlesson-1-1.gif "SQL 14 CTP2")</span></span>  
+  
+2.  <span data-ttu-id="8cf6f-118">Siga las instrucciones paso a paso para [crear una cuenta de almacenamiento](https://azure.microsoft.com/documentation/articles/storage-create-storage-account/).</span><span class="sxs-lookup"><span data-stu-id="8cf6f-118">Use the step by step instructions to [create a storage account](https://azure.microsoft.com/documentation/articles/storage-create-storage-account/).</span></span> <span data-ttu-id="8cf6f-119">Tenga en cuenta que al crear una cuenta de almacenamiento que se usará para la característica archivos de datos de SQL Server en Azure, debe anular la selección o deshabilitar la replicación geográfica.</span><span class="sxs-lookup"><span data-stu-id="8cf6f-119">Note that when creating a storage account to be used for the SQL Server Data Files in Azure feature, you should unselect or disable the geo-replication.</span></span> <span data-ttu-id="8cf6f-120">Esto se debe a que el orden de escritura no se garantiza para los distintos blobs que participen en la replicación geográfica.</span><span class="sxs-lookup"><span data-stu-id="8cf6f-120">This is because write order is not guaranteed for multiple blobs participating in geo-replication.</span></span> <span data-ttu-id="8cf6f-121">Si se georreplica una cuenta de almacenamiento y se requiere la recuperación, se producen daños.</span><span class="sxs-lookup"><span data-stu-id="8cf6f-121">If a storage account is geo-replicated and recovery is required, a corruption occurs.</span></span>  
+  
+     <span data-ttu-id="8cf6f-122">![SQL 14 CTP2](../../2014/tutorials/media/ss-was-tutlesson-1-2.gif "SQL 14 CTP2")</span><span class="sxs-lookup"><span data-stu-id="8cf6f-122">![SQL 14 CTP2](../../2014/tutorials/media/ss-was-tutlesson-1-2.gif "SQL 14 CTP2")</span></span>  
+  
+## <a name="create-a-blob-container"></a><span data-ttu-id="8cf6f-123">Crear un contenedor de blobs</span><span class="sxs-lookup"><span data-stu-id="8cf6f-123">Create a Blob container</span></span>  
+ <span data-ttu-id="8cf6f-124">En Azure, un contenedor proporciona una agrupación de un conjunto de blobs.</span><span class="sxs-lookup"><span data-stu-id="8cf6f-124">In Azure, a container provides a grouping of a set of blobs.</span></span> <span data-ttu-id="8cf6f-125">Todos los blobs deben estar en un contenedor.</span><span class="sxs-lookup"><span data-stu-id="8cf6f-125">All blobs must be in a container.</span></span> <span data-ttu-id="8cf6f-126">Una cuenta de almacenamiento puede contener un número ilimitado de contenedores, pero debe tener al menos uno.</span><span class="sxs-lookup"><span data-stu-id="8cf6f-126">A storage account can contain an unlimited number of containers, but must have at least one container.</span></span> <span data-ttu-id="8cf6f-127">Un contenedor puede almacenar un número ilimitado de blobs.</span><span class="sxs-lookup"><span data-stu-id="8cf6f-127">A container can store an unlimited number of blobs.</span></span> <span data-ttu-id="8cf6f-128">Para obtener la información más actualizada sobre los límites de tamaño de almacenamiento, vea [Cómo usar el servicio de Azure BLOB Storage en .net](https://www.windowsazure.com/develop/net/how-to-guides/blob-storage/).</span><span class="sxs-lookup"><span data-stu-id="8cf6f-128">For most up-to-date information on storage size limits, see [How to use the Azure Blob Storage Service in .NET](https://www.windowsazure.com/develop/net/how-to-guides/blob-storage/).</span></span>  
+  
+ <span data-ttu-id="8cf6f-129">Para crear un contenedor en Azure, siga estos pasos:</span><span class="sxs-lookup"><span data-stu-id="8cf6f-129">To create a container in Azure, follow these steps:</span></span>  
+  
+1.  <span data-ttu-id="8cf6f-130">Inicie sesión en el [Portal de administración de Azure](https://manage.windowsazure.com).</span><span class="sxs-lookup"><span data-stu-id="8cf6f-130">Log in to the [Azure Management Portal](https://manage.windowsazure.com).</span></span>  
+  
+2.  <span data-ttu-id="8cf6f-131">Seleccione la cuenta de almacenamiento, haga clic en la pestaña **contenedores** y haga clic en **Agregar contenedor** en la parte inferior de la pantalla, que abre un nuevo cuadro de diálogo.</span><span class="sxs-lookup"><span data-stu-id="8cf6f-131">Select the storage account, click the **CONTAINERS** tab and click **ADD CONTAINER** at the bottom of the screen, which opens a new dialog box.</span></span>  
+  
+3.  <span data-ttu-id="8cf6f-132">Escriba un nombre para el contenedor.</span><span class="sxs-lookup"><span data-stu-id="8cf6f-132">Enter a name for the container.</span></span>  
+  
+4.  <span data-ttu-id="8cf6f-133">Seleccione **privado** para **tipo de acceso**.</span><span class="sxs-lookup"><span data-stu-id="8cf6f-133">Select **Private** for **Access Type**.</span></span> <span data-ttu-id="8cf6f-134">Al establecer el acceso en privado, solo el propietario de la cuenta de Azure puede leer los datos del contenedor y del BLOB.</span><span class="sxs-lookup"><span data-stu-id="8cf6f-134">When you set the access to private, the container and blob data can be read by the Azure account owner only.</span></span>  
+  
+     <span data-ttu-id="8cf6f-135">![SQL 14 CTP2](../../2014/tutorials/media/ss-was-tutlesson-1-4.gif "SQL 14 CTP2")</span><span class="sxs-lookup"><span data-stu-id="8cf6f-135">![SQL 14 CTP2](../../2014/tutorials/media/ss-was-tutlesson-1-4.gif "SQL 14 CTP2")</span></span>  
+  
+> [!NOTE]  
+>  <span data-ttu-id="8cf6f-136">Para crear un contenedor mediante programación, también puede usar las API de REST.</span><span class="sxs-lookup"><span data-stu-id="8cf6f-136">To create a container programmatically, you can also use REST APIs.</span></span> <span data-ttu-id="8cf6f-137">Para obtener más información, vea [crear contenedor](https://msdn.microsoft.com/library/windowsazure/dd179468.aspx) y también [Azure Storage referencia](https://msdn.microsoft.com/library/windowsazure/dd179355.aspx)de la API de REST de servicios.</span><span class="sxs-lookup"><span data-stu-id="8cf6f-137">For more information, see [Create Container](https://msdn.microsoft.com/library/windowsazure/dd179468.aspx) and also [Azure Storage Services REST API Reference](https://msdn.microsoft.com/library/windowsazure/dd179355.aspx).</span></span>  
+  
+ <span data-ttu-id="8cf6f-138">**Lección siguiente:**</span><span class="sxs-lookup"><span data-stu-id="8cf6f-138">**Next Lesson:**</span></span>  
+  
+ [<span data-ttu-id="8cf6f-139">Lección 2. Crear una directiva en el contenedor y generar una firma de acceso compartido &#40;clave de&#41; SAS</span><span class="sxs-lookup"><span data-stu-id="8cf6f-139">Lesson 2. Create a policy on container and generate a Shared Access Signature &#40;SAS&#41; key</span></span>](../relational-databases/lesson-1-create-stored-access-policy-and-shared-access-signature.md)  
+  
