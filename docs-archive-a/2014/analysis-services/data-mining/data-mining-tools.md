@@ -1,0 +1,97 @@
+---
+title: Herramientas de minería de datos | Microsoft Docs
+ms.custom: ''
+ms.date: 06/13/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: analysis-services
+ms.topic: conceptual
+helpviewer_keywords:
+- tools [Analysis Services]
+- mining models [Analysis Services], tools
+- data mining [Analysis Services], tools
+- data mining [Analysis Services], development
+ms.assetid: 003ada6a-0bcd-4f16-8c34-1a9ffc75cd2c
+author: minewiskan
+ms.author: owend
+ms.openlocfilehash: 4be2f343f0fb7969f76b63ec1eb1677c1c9e589f
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: es-ES
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87677957"
+---
+# <a name="data-mining-tools"></a><span data-ttu-id="ea1dd-102">Herramientas de minería de datos</span><span class="sxs-lookup"><span data-stu-id="ea1dd-102">Data Mining Tools</span></span>
+  [!INCLUDE[msCoName](../../includes/msconame-md.md)]<span data-ttu-id="ea1dd-103">[!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)] proporciona las siguientes herramientas que puede utilizar para crear soluciones de minería de datos:</span><span class="sxs-lookup"><span data-stu-id="ea1dd-103">[!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)] provides the following tools that you can use to create data mining solutions:</span></span>  
+  
+-   <span data-ttu-id="ea1dd-104">El **Asistente para minería de datos** de [!INCLUDE[ssBIDevStudioFull](../../includes/ssbidevstudiofull-md.md)] facilita la creación de estructuras y de modelos de minería de datos, usando orígenes de datos relacionales o datos multidimensionales en cubos.</span><span class="sxs-lookup"><span data-stu-id="ea1dd-104">The **Data Mining Wizard** in [!INCLUDE[ssBIDevStudioFull](../../includes/ssbidevstudiofull-md.md)] makes it easy to create mining structures and mining models, using either relational data sources or multidimensional data in cubes.</span></span>  
+  
+     <span data-ttu-id="ea1dd-105">En el asistente, elija los datos que desee utilizar y, a continuación, aplique técnicas de minería de datos específicas, como agrupación en clústeres, redes neurales o modelado de series temporales.</span><span class="sxs-lookup"><span data-stu-id="ea1dd-105">In the wizard, you choose data to use, and then apply specific data mining techniques, such as clustering, neural networks, or time series modeling.</span></span>  
+  
+-   <span data-ttu-id="ea1dd-106">**y** disponen de [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)] visores de modelos [!INCLUDE[ssBIDevStudioFull](../../includes/ssbidevstudiofull-md.md)]para explorar los modelos de minería de datos una vez creados.</span><span class="sxs-lookup"><span data-stu-id="ea1dd-106">**Model viewers** are provided in both [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)] and [!INCLUDE[ssBIDevStudioFull](../../includes/ssbidevstudiofull-md.md)], for exploring your mining models after they are created.</span></span>  <span data-ttu-id="ea1dd-107">Puede examinar los modelos mediante visores adaptados a cada algoritmo o analizar con mayor profundidad utilizando el visor de contenido del modelo.</span><span class="sxs-lookup"><span data-stu-id="ea1dd-107">You can browse models using viewers tailored to each algorithm, or go deeper into analysis by using the model content viewer.</span></span>  
+  
+-   <span data-ttu-id="ea1dd-108">El **Generador de consultas de predicción** se proporciona en [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)] y [!INCLUDE[ssBIDevStudioFull](../../includes/ssbidevstudiofull-md.md)] para ayudarle a crear consultas de predicción.</span><span class="sxs-lookup"><span data-stu-id="ea1dd-108">The **Prediction Query Builder** is provided in both [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)] and [!INCLUDE[ssBIDevStudioFull](../../includes/ssbidevstudiofull-md.md)] to help you create prediction queries.</span></span> <span data-ttu-id="ea1dd-109">También puede probar la exactitud de los modelos respecto a un conjunto de datos de exclusión o datos externos, o utilizar validación cruzada para evaluar la calidad del conjunto de datos.</span><span class="sxs-lookup"><span data-stu-id="ea1dd-109">You can also test the accuracy of models against a holdout data set or external data, or use cross-validation to assess the quality of your data set.</span></span>  
+  
+-   [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)] <span data-ttu-id="ea1dd-110">es la interfaz en la que administra las soluciones de minería de datos implementadas en una instancia de [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)].</span><span class="sxs-lookup"><span data-stu-id="ea1dd-110">is the interface where you manage existing data mining solutions that have been deployed to an instance of [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)].</span></span> <span data-ttu-id="ea1dd-111">Puede volver a procesar las estructuras y modelos para actualizar los datos que contienen.</span><span class="sxs-lookup"><span data-stu-id="ea1dd-111">You can reprocess structures and models to update the data in them.</span></span>  
+  
+-   [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]<span data-ttu-id="ea1dd-112">[!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)]contiene herramientas que puede utilizar para limpiar datos, automatizar tareas como la creación de predicciones y la actualización de modelos, y para crear soluciones de minería de texto.</span><span class="sxs-lookup"><span data-stu-id="ea1dd-112">[!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] contains tools that you can use to clean data, to automate tasks such as creating predictions and updating models, and to create text mining solutions.</span></span>  
+  
+ <span data-ttu-id="ea1dd-113">Las siguientes secciones proporcionan más información sobre las herramientas de minería de datos de [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].</span><span class="sxs-lookup"><span data-stu-id="ea1dd-113">The following sections provide more information about the data mining tools in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].</span></span>  
+  
+## <a name="data-mining-wizard"></a><span data-ttu-id="ea1dd-114">Asistente para minería de datos</span><span class="sxs-lookup"><span data-stu-id="ea1dd-114">Data Mining Wizard</span></span>  
+ <span data-ttu-id="ea1dd-115">Utilice el Asistente para minería de datos para empezar a crear soluciones de minería de datos.</span><span class="sxs-lookup"><span data-stu-id="ea1dd-115">Use the Data Mining Wizard to get started creating data mining solutions.</span></span> <span data-ttu-id="ea1dd-116">El asistente es rápido y sencillo, y le guía en el proceso de creación de una estructura de minería de datos y un modelo inicial de minería de datos relacionado. Asimismo, incluye las tareas necesarias para seleccionar un tipo de algoritmo y un origen de datos, y para definir los datos del caso usados para el análisis.</span><span class="sxs-lookup"><span data-stu-id="ea1dd-116">The wizard is quick and easy, and guides you through the process of creating a data mining structure and an initial related mining model, and includes the tasks of selecting an algorithm type and a data source, and defining the case data used for analysis.</span></span>  
+  
+ <span data-ttu-id="ea1dd-117">**Para más información:** [Asistente para minería de datos &#40;Analysis Services - Minería de datos&#41;](data-mining-wizard-analysis-services-data-mining.md).</span><span class="sxs-lookup"><span data-stu-id="ea1dd-117">**For More Information:** [Data Mining Wizard &#40;Analysis Services - Data Mining&#41;](data-mining-wizard-analysis-services-data-mining.md)</span></span>  
+  
+## <a name="data-mining-designer"></a><span data-ttu-id="ea1dd-118">Data Mining Designer</span><span class="sxs-lookup"><span data-stu-id="ea1dd-118">Data Mining Designer</span></span>  
+ <span data-ttu-id="ea1dd-119">Después de crear una estructura y modelo de minería de datos mediante el Asistente para minería de datos, puede utilizar el Diseñador de minería de datos desde [!INCLUDE[ssBIDevStudioFull](../../includes/ssbidevstudiofull-md.md)] o [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)] para trabajar con las estructuras y modelos de minería de datos existentes.</span><span class="sxs-lookup"><span data-stu-id="ea1dd-119">After you have created a mining structure and mining model by using the Data Mining Wizard, you can use the Data Mining Designer from either [!INCLUDE[ssBIDevStudioFull](../../includes/ssbidevstudiofull-md.md)] or [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)] to work with existing models and structures.</span></span>  
+  
+ <span data-ttu-id="ea1dd-120">El diseñador incluye herramientas para estas tareas:</span><span class="sxs-lookup"><span data-stu-id="ea1dd-120">The designer includes tools for these tasks:</span></span>  
+  
+-   <span data-ttu-id="ea1dd-121">Modificar las propiedades de las estructuras de minería de datos, agregar columnas y crear alias de columna, cambiar el método de discretización o la distribución de valores esperada.</span><span class="sxs-lookup"><span data-stu-id="ea1dd-121">Modify the properties of mining structures, add columns and create column aliases, change the binning method or expected distribution of values.</span></span>  
+  
+-   <span data-ttu-id="ea1dd-122">Agregar nuevos modelos a una estructura existente; copiar modelos, cambiar las propiedades o metadatos del modelo o definir filtros en un modelo de minería de datos.</span><span class="sxs-lookup"><span data-stu-id="ea1dd-122">Add new models to an existing structure; copy models, change model properties or metadata, or define filters on a mining model.</span></span>  
+  
+-   <span data-ttu-id="ea1dd-123">Examinar los patrones y reglas que incluye el modelo; explorar asociaciones o árboles de decisión.</span><span class="sxs-lookup"><span data-stu-id="ea1dd-123">Browse the patterns and rules within the model; explore associations or decision trees.</span></span> <span data-ttu-id="ea1dd-124">Obtener estadísticas detalladas sobre</span><span class="sxs-lookup"><span data-stu-id="ea1dd-124">Get detailed statistics about</span></span>  
+  
+     <span data-ttu-id="ea1dd-125">Se proporcionan visores personalizados para cada tiempo del modelo, para ayudarle a analizar sus datos y explorar los patrones que revela la minería de datos.</span><span class="sxs-lookup"><span data-stu-id="ea1dd-125">Custom viewers are provided for each different time of model, to help you analyze your data and explore the patterns revealed by data mining.</span></span>  
+  
+-   <span data-ttu-id="ea1dd-126">Validar modelos creando gráficos de elevación o analizando la curva de ganancia de los modelos.</span><span class="sxs-lookup"><span data-stu-id="ea1dd-126">Validate models by creating lift charts, or analyzing the profit curve for models.</span></span> <span data-ttu-id="ea1dd-127">Comparar modelos utilizando matrices de clasificación, o validar un conjunto de datos y sus modelos utilizando la validación cruzada.</span><span class="sxs-lookup"><span data-stu-id="ea1dd-127">Compare models using classification matrices, or validate a data set and its models by using cross-validation.</span></span>  
+  
+-   <span data-ttu-id="ea1dd-128">Crear predicciones y consultas de contenido en los modelos de minería de datos existentes.</span><span class="sxs-lookup"><span data-stu-id="ea1dd-128">Create predictions and content queries against existing mining models.</span></span> <span data-ttu-id="ea1dd-129">Compilar consultas únicas, o configurar consultas para generar predicciones para tablas de datos externos completas.</span><span class="sxs-lookup"><span data-stu-id="ea1dd-129">Build one-off queries, or set up queries to generate predictions for entire tables of external data.</span></span>  
+  
+ <span data-ttu-id="ea1dd-130">**Para obtener más información:** [Diseñador de minería de datos](data-mining-designer.md)</span><span class="sxs-lookup"><span data-stu-id="ea1dd-130">**For More Information:** [Data Mining Designer](data-mining-designer.md)</span></span>  
+  
+## <a name="sql-server-management-studio"></a><span data-ttu-id="ea1dd-131">SQL Server Management Studio</span><span class="sxs-lookup"><span data-stu-id="ea1dd-131">SQL Server Management Studio</span></span>  
+ <span data-ttu-id="ea1dd-132">Después de crear e implementar los modelos de minería de datos en un servidor, puede utilizar [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)] para administrar la base de datos [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)] que hospeda los objetos de minería de datos.</span><span class="sxs-lookup"><span data-stu-id="ea1dd-132">After you create and deploy mining models to a server, you can use [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)] to manage the [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)] database that hosts the data mining objects.</span></span> <span data-ttu-id="ea1dd-133">También puede seguir realizando tareas que utilizan el modelo, como explorar modelos, procesar nuevos datos y crear predicciones.</span><span class="sxs-lookup"><span data-stu-id="ea1dd-133">You can also continue to perform tasks that use the model, such as exploring the models, processing new data, and creating predictions.</span></span>  
+  
+ [!INCLUDE[ssManStudio](../../includes/ssmanstudio-md.md)] <span data-ttu-id="ea1dd-134">también contiene editores de consultas que puede usar para diseñar y ejecutar consultas de extensiones de minería de datos (DMX) o trabajar con objetos de minería de datos con XMLA.</span><span class="sxs-lookup"><span data-stu-id="ea1dd-134">also contains query editors that you can use to design and execute Data Mining Extensions (DMX) queries, or ot work with data mining objects by using XMLA.</span></span>  
+  
+## <a name="integration-services-data-mining-tasks-and-transformations"></a><span data-ttu-id="ea1dd-135">Transformaciones y tareas de minería de datos en Integration Services</span><span class="sxs-lookup"><span data-stu-id="ea1dd-135">Integration Services Data Mining Tasks and Transformations</span></span>  
+ [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]<span data-ttu-id="ea1dd-136">[!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)]proporciona muchos componentes que admiten la minería de datos.</span><span class="sxs-lookup"><span data-stu-id="ea1dd-136">[!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] provides many components that support data mining.</span></span>  
+  
+ <span data-ttu-id="ea1dd-137">Algunas herramientas de [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] están diseñadas para ayudar a automatizar tareas de datos comunes, incluida la predicción, la compilación de modelos y el procesamiento.</span><span class="sxs-lookup"><span data-stu-id="ea1dd-137">Some tools in [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] are designed to help automate common data mining tasks, including prediction, model building, and processing.</span></span> <span data-ttu-id="ea1dd-138">Por ejemplo:</span><span class="sxs-lookup"><span data-stu-id="ea1dd-138">For example:</span></span>  
+  
+-   <span data-ttu-id="ea1dd-139">Crear un paquete de [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] que actualice automáticamente el modelo cada vez que el conjunto de datos se actualice con nuevos clientes</span><span class="sxs-lookup"><span data-stu-id="ea1dd-139">Create an [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] package that automatically updates the model every time the dataset is updated with new customers</span></span>  
+  
+-   <span data-ttu-id="ea1dd-140">Realizar una segmentación personalizada o un muestreo personalizado de los registros del caso.</span><span class="sxs-lookup"><span data-stu-id="ea1dd-140">Perform custom segmentation or custom sampling of case records.</span></span>  
+  
+-   <span data-ttu-id="ea1dd-141">Generar automáticamente modelos pasados en parámetros.</span><span class="sxs-lookup"><span data-stu-id="ea1dd-141">Automatically generate models passed on parameters.</span></span>  
+  
+ <span data-ttu-id="ea1dd-142">Sin embargo, también puede utilizar la minería de datos en un flujo de trabajo de paquetes, como una entrada a otros procesos.</span><span class="sxs-lookup"><span data-stu-id="ea1dd-142">However, you can also use data mining in a package workflow, as an input to other processes.</span></span> <span data-ttu-id="ea1dd-143">Por ejemplo:</span><span class="sxs-lookup"><span data-stu-id="ea1dd-143">For example:</span></span>  
+  
+-   <span data-ttu-id="ea1dd-144">Usar valores de probabilidad generados por el modelo para ponderar las puntuaciones de la minería de texto u otras tareas de clasificación.</span><span class="sxs-lookup"><span data-stu-id="ea1dd-144">Use probability values generated by the model to weight scores for text mining or other classification tasks.</span></span>  
+  
+-   <span data-ttu-id="ea1dd-145">Generar automáticamente predicciones basadas en datos anteriores y utilizar esos valores para evaluar la validez de nuevos datos.</span><span class="sxs-lookup"><span data-stu-id="ea1dd-145">Automatically generate predictions based on prior data and use those values to assess the validity of new data.</span></span>  
+  
+-   <span data-ttu-id="ea1dd-146">Usar la regresión logística para segmentar los clientes de entrada por riesgo.</span><span class="sxs-lookup"><span data-stu-id="ea1dd-146">Using logistic regression to segment incoming customers by risk.</span></span>  
+  
+ <span data-ttu-id="ea1dd-147">**Para más información:** [Proyectos relacionados para soluciones de minería de datos](data-mining-solutions.md)</span><span class="sxs-lookup"><span data-stu-id="ea1dd-147">**For More Information:** [Related Projects for Data Mining Solutions](data-mining-solutions.md)</span></span>  
+  
+## <a name="see-also"></a><span data-ttu-id="ea1dd-148">Consulte también</span><span class="sxs-lookup"><span data-stu-id="ea1dd-148">See Also</span></span>  
+ <span data-ttu-id="ea1dd-149">[Referencia de extensiones de minería de datos &#40;DMX&#41;](/sql/dmx/data-mining-extensions-dmx-reference) </span><span class="sxs-lookup"><span data-stu-id="ea1dd-149">[Data Mining Extensions &#40;DMX&#41; Reference](/sql/dmx/data-mining-extensions-dmx-reference) </span></span>  
+ <span data-ttu-id="ea1dd-150">[Tareas y procedimientos del modelo de minería de datos](mining-model-tasks-and-how-tos.md) </span><span class="sxs-lookup"><span data-stu-id="ea1dd-150">[Mining Model Tasks and How-tos](mining-model-tasks-and-how-tos.md) </span></span>  
+ <span data-ttu-id="ea1dd-151">[Tareas y procedimientos del visor de modelos de minería de datos](mining-model-viewer-tasks-and-how-tos.md) </span><span class="sxs-lookup"><span data-stu-id="ea1dd-151">[Mining Model Viewer Tasks and How-tos](mining-model-viewer-tasks-and-how-tos.md) </span></span>  
+ [<span data-ttu-id="ea1dd-152">Soluciones de minería de datos</span><span class="sxs-lookup"><span data-stu-id="ea1dd-152">Data Mining Solutions</span></span>](data-mining-solutions.md)  
+  
+  

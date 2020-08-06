@@ -1,0 +1,38 @@
+---
+title: Definir asignaciones y otros comandos de script | Microsoft Docs
+ms.custom: ''
+ms.date: 06/13/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: analysis-services
+ms.topic: conceptual
+helpviewer_keywords:
+- empty scripts [Analysis Services]
+- calculations [Analysis Services], scripts
+- MDX [Analysis Services], scripts
+- scripts [Analysis Services], calculations
+ms.assetid: f28b9b22-3dc7-4a45-b4eb-2d023f2c94b8
+author: minewiskan
+ms.author: owend
+ms.openlocfilehash: 184c998bb4bd27d077cca78e792a7e7712f87666
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: es-ES
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87675614"
+---
+# <a name="define-assignments-and-other-script-commands"></a><span data-ttu-id="8d906-102">Definir asignaciones y otros comandos de script</span><span class="sxs-lookup"><span data-stu-id="8d906-102">Define Assignments and Other Script Commands</span></span>
+  <span data-ttu-id="8d906-103">En la pestaña **Cálculos** del Diseñador de cubos, haga clic en el icono **Nuevo comando de script** de la barra de herramientas para crear un script vacío.</span><span class="sxs-lookup"><span data-stu-id="8d906-103">On the **Calculations** tab of Cube Designer, click the **New ScriptCommand** icon on the toolbar to create an empty script.</span></span> <span data-ttu-id="8d906-104">Cuando se crea un nuevo script, se muestra inicialmente con un título en blanco en el panel **organizador de script** de la pestaña cálculos. Los caracteres que escriba en el panel de las expresiones de cálculo estarán visibles como nombre del elemento en el **organizador de scripts**.</span><span class="sxs-lookup"><span data-stu-id="8d906-104">When you create a new script, it initially is displayed with a blank title in the **Script Organizer** pane of the Calculations tab. The characters you type in the Calculation Expressions pane will be visible as the name of the item in **Script Organizer**.</span></span> <span data-ttu-id="8d906-105">Por lo tanto, puede que desee escribir un nombre comentado en la primera línea para identificar más fácilmente el script en el panel **Organizador de script** .</span><span class="sxs-lookup"><span data-stu-id="8d906-105">Therefore, you may want to type a commented name on the first line to more easily identify the script in the **Script Organizer** pane.</span></span> <span data-ttu-id="8d906-106">Para obtener más información, vea la [introducción a scripting de MDX en Microsoft SQL Server 2005](https://go.microsoft.com/fwlink/?LinkId=81892).</span><span class="sxs-lookup"><span data-stu-id="8d906-106">For more information, see [Introduction to MDX Scripting in Microsoft SQL Server 2005](https://go.microsoft.com/fwlink/?LinkId=81892).</span></span> <span data-ttu-id="8d906-107">Para obtener más información acerca de los problemas de rendimiento relacionados con las consultas y los cálculos de MDX, vea la sección sobre escritura de MDX eficaz en la [Guía de rendimiento de SQL Server 2005 Analysis Services](https://docsbay.net/Microsoft-SQL-Server-2005-Analysis-Services-Performance-Guide).</span><span class="sxs-lookup"><span data-stu-id="8d906-107">For more information about performance issues related to MDX queries and calculations, see the section "Writing Efficient MDX" in the [SQL Server 2005 Analysis Services Performance Guide](https://docsbay.net/Microsoft-SQL-Server-2005-Analysis-Services-Performance-Guide).</span></span>  
+  
+> [!IMPORTANT]  
+>  <span data-ttu-id="8d906-108">Cuando cambie inicialmente a la pestaña **Cálculos** del Diseñador de cubos, el panel **Organizador de script** contendrá un único script con un comando CALCULATE.</span><span class="sxs-lookup"><span data-stu-id="8d906-108">When you initially switch to the **Calculations** tab of Cube Designer, the **Script Organizer** pane contains a single script with a CALCULATE command.</span></span> <span data-ttu-id="8d906-109">El comando CALCULATE controla la agregación de las celdas en el cubo y solo debería editarse si se desea especificar manualmente la forma en que se debería agregar el cubo.</span><span class="sxs-lookup"><span data-stu-id="8d906-109">The CALCULATE command controls the aggregation of the cells in the cube and should be edited only if you intend to manually specify how the cube is to be aggregated.</span></span>  
+  
+ <span data-ttu-id="8d906-110">Puede utilizar el panel de las expresiones de cálculo para generar una expresión con la sintaxis MDX (Expresiones multidimensionales).</span><span class="sxs-lookup"><span data-stu-id="8d906-110">You can use the Calculation Expressions pane to build an expression in Multidimensional Expressions (MDX) syntax.</span></span> <span data-ttu-id="8d906-111">Mientras genera la expresión, puede arrastrar o copiar los componentes, las funciones y las plantillas del cubo del panel **Herramientas de cálculo** al panel de las expresiones de cálculo.</span><span class="sxs-lookup"><span data-stu-id="8d906-111">While you build the expression, you can drag or copy cube components, functions, and templates from the **Calculation Tools** pane to the Calculation Expressions pane.</span></span> <span data-ttu-id="8d906-112">De esta forma se agregará el script para el elemento al panel de las expresiones de cálculo en la ubicación, en la que la coloque o pegue.</span><span class="sxs-lookup"><span data-stu-id="8d906-112">Doing so adds the script for the item to the Calculation Expressions pane in the location that you drop or paste it.</span></span> <span data-ttu-id="8d906-113">Reemplace los argumentos y sus delimitadores (« y ») con los valores correspondientes.</span><span class="sxs-lookup"><span data-stu-id="8d906-113">Replace arguments and their delimiters (« and ») with the appropriate values.</span></span>  
+  
+> [!IMPORTANT]  
+>  <span data-ttu-id="8d906-114">Cuando escriba una expresión que contenga varias instrucciones mediante el panel de las expresiones de cálculo, asegúrese de que todas las líneas salvo la última del script MDX finalicen por un punto y coma (;).</span><span class="sxs-lookup"><span data-stu-id="8d906-114">When writing an expression that contains multiple statements using the Calculation Expressions pane, ensure that all lines except the last line of the MDX script end with a semi-colon (;).</span></span> <span data-ttu-id="8d906-115">Los cálculos se concatenan en un único script MDX, y cada script tiene un punto y coma anexado a ella para asegurarse de que el script MDX se compila correctamente.</span><span class="sxs-lookup"><span data-stu-id="8d906-115">Calculations are concatenated into a single MDX script, and each script has a semi-colon appended to it to ensure that the MDX script compiles correctly.</span></span> <span data-ttu-id="8d906-116">Si agrega un punto y coma a la última línea del script del panel de las expresiones de cálculo, el cubo se generará e implementará correctamente, pero no podrá ejecutar consultas en él.</span><span class="sxs-lookup"><span data-stu-id="8d906-116">If you add a semi-colon to the last line of the script in the Calculation Expressions pane, the cube will build and deploy correctly but you will be unable to run queries against it.</span></span>  
+  
+## <a name="see-also"></a><span data-ttu-id="8d906-117">Consulte también</span><span class="sxs-lookup"><span data-stu-id="8d906-117">See Also</span></span>  
+ [<span data-ttu-id="8d906-118">Cálculos en modelos multidimensionales</span><span class="sxs-lookup"><span data-stu-id="8d906-118">Calculations in Multidimensional Models</span></span>](calculations-in-multidimensional-models.md)  
+  
+  
