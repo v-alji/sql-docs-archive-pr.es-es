@@ -1,0 +1,50 @@
+---
+title: Proteger carpetas | Microsoft Docs
+ms.custom: ''
+ms.date: 06/13/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: reporting-services-native
+ms.topic: conceptual
+helpviewer_keywords:
+- high-security folders [Reporting Services]
+- low-security folders
+- folders [Reporting Services], security
+- security [Reporting Services], folders
+ms.assetid: 0fd91f77-0143-476b-9af0-87293be78e44
+author: maggiesMSFT
+ms.author: maggies
+manager: kfile
+ms.openlocfilehash: 483b3108713032b3aaf566208f39f6c2f705da1a
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: es-ES
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87670256"
+---
+# <a name="secure-folders"></a><span data-ttu-id="d1614-102">Proteger carpetas</span><span class="sxs-lookup"><span data-stu-id="d1614-102">Secure Folders</span></span>
+  <span data-ttu-id="d1614-103">La seguridad de las carpetas es fundamental para proteger todo el contenido de un servidor de informes.</span><span class="sxs-lookup"><span data-stu-id="d1614-103">Folder security is the foundation for securing all content in a report server.</span></span> <span data-ttu-id="d1614-104">Puesto que la seguridad se hereda en toda la estructura de carpetas, puede designar secciones grandes o pequeñas de la jerarquía de carpetas para permitir ciertos tipos de acceso.</span><span class="sxs-lookup"><span data-stu-id="d1614-104">Because security is inherited throughout the folder structure, you can designate large or small sections of the folder hierarchy to allow for certain kinds of access.</span></span>  
+  
+ <span data-ttu-id="d1614-105">Las carpetas de alta seguridad se pueden utilizar para almacenar informes confidenciales o como áreas de ensayo; por ejemplo, puede utilizar una carpeta para probar informes antes de moverlos a la ubicación final.</span><span class="sxs-lookup"><span data-stu-id="d1614-105">High-security folders can be used to store confidential reports or as staging areas; for example, you can have a folder that you use to test reports before moving them to a final location.</span></span> <span data-ttu-id="d1614-106">Para controlar el acceso a esta área, puede definir una asignación de roles que solo permita a los autores de los informes agregar y eliminar elementos, y una segunda asignación de roles que permita a los evaluadores ejecutar informes, pero no agregar ni quitar elementos.</span><span class="sxs-lookup"><span data-stu-id="d1614-106">To control access to this area, you can define one role assignment that allows only report authors to add and delete items, and a second role assignment that allows testers to run reports but not to add or remove items.</span></span> <span data-ttu-id="d1614-107">Puesto que las asignaciones de roles están definidas explícitamente para evaluadores y autores de informes, ningún otro usuario (excepto los administradores del sistema local) puede tener acceso a la carpeta.</span><span class="sxs-lookup"><span data-stu-id="d1614-107">Because the role assignments are defined explicitly for testers and report authors, no other users (except for local system administrators) can access the folder.</span></span>  
+  
+ <span data-ttu-id="d1614-108">Las carpetas de baja seguridad pueden utilizarse para almacenar informes a los que desea tener acceso con facilidad.</span><span class="sxs-lookup"><span data-stu-id="d1614-108">Low-security folders can be used to store reports that you want to be easily accessible.</span></span>  
+  
+ <span data-ttu-id="d1614-109">La seguridad de las carpetas constituye la base de la seguridad de nivel de elemento, comenzando con el nodo raíz de la jerarquía de carpetas del servidor de informes, la carpeta Inicio.</span><span class="sxs-lookup"><span data-stu-id="d1614-109">Folder security forms the basis of item-level security, starting with the root node of the report server folder hierarchy, the Home folder.</span></span> <span data-ttu-id="d1614-110">Puesto que la seguridad se hereda, es aconsejable establecer una directiva de seguridad bastante restrictiva en la carpeta Inicio.</span><span class="sxs-lookup"><span data-stu-id="d1614-110">Because security is inherited, it is advisable to set a fairly restrictive security policy on the Home folder.</span></span> <span data-ttu-id="d1614-111">Usar el rol **Explorador** en las asignaciones de roles de la carpeta particular es exactamente igual que proporcionar acceso de solo vista.</span><span class="sxs-lookup"><span data-stu-id="d1614-111">Using the **Browser** role in Home folder role assignments does exactly that by providing view-only access.</span></span>  
+  
+## <a name="tasks-and-folder-access"></a><span data-ttu-id="d1614-112">Tareas y acceso a carpetas</span><span class="sxs-lookup"><span data-stu-id="d1614-112">Tasks and Folder Access</span></span>  
+ <span data-ttu-id="d1614-113">Cuando cree asignaciones de roles para carpetas, tenga en cuenta las tareas que figuran en la siguiente tabla.</span><span class="sxs-lookup"><span data-stu-id="d1614-113">When creating role assignments for folders, consider the tasks listed in the following table.</span></span>  
+  
+|<span data-ttu-id="d1614-114">Seleccione esta tarea</span><span class="sxs-lookup"><span data-stu-id="d1614-114">Select this task</span></span>|<span data-ttu-id="d1614-115">Para conceder permiso para</span><span class="sxs-lookup"><span data-stu-id="d1614-115">To give permission to</span></span>|  
+|----------------------|---------------------------|  
+|<span data-ttu-id="d1614-116">Ver carpetas</span><span class="sxs-lookup"><span data-stu-id="d1614-116">View folders</span></span>|<span data-ttu-id="d1614-117">Ver la jerarquía de carpetas y las propiedades de solo lectura que indican cuándo se creó y modificó la carpeta.</span><span class="sxs-lookup"><span data-stu-id="d1614-117">View the folder hierarchy and read-only properties that indicate when the folder was created and modified.</span></span><br /><br /> <span data-ttu-id="d1614-118">Los usuarios no pueden ver los elementos de la carpeta a no ser que estén asignados a los roles que también incluyan las tareas siguientes: "Ver informes", "Ver modelos", "Ver recursos" y "Ver orígenes de datos".</span><span class="sxs-lookup"><span data-stu-id="d1614-118">Users cannot view items in the folder unless they are assigned to roles that also include the following tasks: "View reports," "View models", "View resources," and "View data sources."</span></span>|  
+|<span data-ttu-id="d1614-119">Administrar carpetas</span><span class="sxs-lookup"><span data-stu-id="d1614-119">Manage folders</span></span>|<span data-ttu-id="d1614-120">Ver las propiedades de la carpeta, cambiar el nombre o la descripción, o bien mover la carpeta a otra ubicación.</span><span class="sxs-lookup"><span data-stu-id="d1614-120">View folder properties, change the name or description, or move the folder to another location.</span></span> <span data-ttu-id="d1614-121">Esta tarea permite a los usuarios crear carpetas.</span><span class="sxs-lookup"><span data-stu-id="d1614-121">This task allows users to create folders.</span></span>|  
+|<span data-ttu-id="d1614-122">Administrar informes</span><span class="sxs-lookup"><span data-stu-id="d1614-122">Manage reports</span></span>|<span data-ttu-id="d1614-123">Agregar informes del sistema de archivos a una carpeta, así como publicar informes desde el Diseñador de informes al servidor de informes.</span><span class="sxs-lookup"><span data-stu-id="d1614-123">Add reports from the file system to a folder and publish reports from Report Designer to the report server.</span></span>|  
+|<span data-ttu-id="d1614-124">Administración de orígenes de datos</span><span class="sxs-lookup"><span data-stu-id="d1614-124">Manage data sources</span></span>|<span data-ttu-id="d1614-125">Agregar nuevos elementos de orígenes de datos compartidos a una carpeta y cambiar los orígenes de datos compartidos existentes.</span><span class="sxs-lookup"><span data-stu-id="d1614-125">Add new shared data source items to a folder and change existing shared data sources.</span></span>|  
+|<span data-ttu-id="d1614-126">Establecer la seguridad de elementos individuales</span><span class="sxs-lookup"><span data-stu-id="d1614-126">Set security on items</span></span>|<span data-ttu-id="d1614-127">Puede definir y modificar las asignaciones de roles que controlan el acceso a la carpeta.</span><span class="sxs-lookup"><span data-stu-id="d1614-127">Create and modify role assignments that control access to the folder.</span></span> <span data-ttu-id="d1614-128">Esta tarea debe utilizarse con "Ver carpetas" o "Administrar carpetas".</span><span class="sxs-lookup"><span data-stu-id="d1614-128">This task must be used with either "View folders" or "Manage folders."</span></span> <span data-ttu-id="d1614-129">De lo contrario, no surtirá efecto, ya que el usuario no podrá seleccionar el elemento.</span><span class="sxs-lookup"><span data-stu-id="d1614-129">If it is not, it will have no effect because the user will not be able to select the item.</span></span>|  
+  
+## <a name="see-also"></a><span data-ttu-id="d1614-130">Consulte también</span><span class="sxs-lookup"><span data-stu-id="d1614-130">See Also</span></span>  
+ <span data-ttu-id="d1614-131">[Proteger informes y recursos](secure-reports-and-resources.md) </span><span class="sxs-lookup"><span data-stu-id="d1614-131">[Secure Reports and Resources](secure-reports-and-resources.md) </span></span>  
+ <span data-ttu-id="d1614-132">[Protección de elementos de orígenes de datos compartidos](secure-shared-data-source-items.md) </span><span class="sxs-lookup"><span data-stu-id="d1614-132">[Secure Shared Data Source Items](secure-shared-data-source-items.md) </span></span>  
+ [<span data-ttu-id="d1614-133">Concesión de permisos en un servidor de informes en modo nativo</span><span class="sxs-lookup"><span data-stu-id="d1614-133">Granting Permissions on a Native Mode Report Server</span></span>](granting-permissions-on-a-native-mode-report-server.md)  
+  
+  

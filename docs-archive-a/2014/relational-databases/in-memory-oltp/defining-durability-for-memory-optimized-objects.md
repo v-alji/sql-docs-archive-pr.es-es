@@ -1,0 +1,62 @@
+---
+title: Definición de la durabilidad de los objetos con optimización para memoria | Microsoft Docs
+ms.custom: ''
+ms.date: 06/13/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: in-memory-oltp
+ms.topic: conceptual
+ms.assetid: 0fe85fbf-8e8d-4983-96fd-d04b3c7d6d65
+author: CarlRabeler
+ms.author: carlrab
+ms.openlocfilehash: 325f50a74ea75270dd62fc3564200c59255dc6cb
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: es-ES
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87670372"
+---
+# <a name="defining-durability-for-memory-optimized-objects"></a><span data-ttu-id="41d25-102">Definir la durabilidad de los objetos con optimización para memoria</span><span class="sxs-lookup"><span data-stu-id="41d25-102">Defining Durability for Memory-Optimized Objects</span></span>
+  <span data-ttu-id="41d25-103">OLTP en memoria garantiza las propiedades completas de atomicidad, coherencia, aislamiento y durabilidad (ACID).</span><span class="sxs-lookup"><span data-stu-id="41d25-103">In-Memory OLTP guarantees full atomicity, consistency, isolation, and full durability (ACID) properties.</span></span> <span data-ttu-id="41d25-104">La durabilidad en el contexto de las tablas optimizadas para memoria y [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] ofrece las garantías siguientes:</span><span class="sxs-lookup"><span data-stu-id="41d25-104">Durability in the context of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] and memory-optimized tables provides following guarantees:</span></span>  
+  
+ <span data-ttu-id="41d25-105">Durabilidad transaccional</span><span class="sxs-lookup"><span data-stu-id="41d25-105">Transactional Durability</span></span>  
+ <span data-ttu-id="41d25-106">Cuando se confirma una transacción totalmente durable que realizó cambios (DDL o DML) en una tabla optimizada para memoria, los cambios realizados en una tabla durable optimizada para memoria son permanentes.</span><span class="sxs-lookup"><span data-stu-id="41d25-106">When you commit a fully durable transaction that made (DDL or DML) changes to a memory-optimized table, the changes made to a durable memory-optimized table are permanent.</span></span>  
+  
+ <span data-ttu-id="41d25-107">Cuando se confirma una transacción diferida durable en una tabla optimizada para memoria, la transacción se convierte en perdurable solo después de que el registro de transacciones en memoria se guarde en el disco.</span><span class="sxs-lookup"><span data-stu-id="41d25-107">When you commit a delayed durable transaction to a memory-optimized table, the transaction becomes durable only after the in-memory transaction log is saved to disk.</span></span>  
+  
+ <span data-ttu-id="41d25-108">Durabilidad del reinicio</span><span class="sxs-lookup"><span data-stu-id="41d25-108">Restart Durability</span></span>  
+ <span data-ttu-id="41d25-109">Cuando [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] se reinicia tras un cierre planeado o un bloqueo, se vuelve a crear una instancia de las tablas durables optimizadas para memoria para restaurarlas al estado anterior al cierre o al bloqueo.</span><span class="sxs-lookup"><span data-stu-id="41d25-109">When [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] restarts after a crash or planned shutdown, the memory-optimized durable tables are reinstantiated to restore them to the state before the shutdown or crash.</span></span>  
+  
+ <span data-ttu-id="41d25-110">Durabilidad de los errores de medios</span><span class="sxs-lookup"><span data-stu-id="41d25-110">Media Failure Durability</span></span>  
+ <span data-ttu-id="41d25-111">Si un disco dañado o con errores contiene una o más copias conservadas de objetos optimizados para memoria durables, la característica de restauración y copia de seguridad de [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] restaura las tablas optimizadas para memoria en los nuevos medios.</span><span class="sxs-lookup"><span data-stu-id="41d25-111">If a failed or corrupt disk contains one or more persisted copies of durable memory-optimized objects, the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] backup and restore feature restores memory-optimized tables on the new media.</span></span>  
+  
+ <span data-ttu-id="41d25-112">Hay dos opciones de durabilidad para las tablas optimizadas para memoria:</span><span class="sxs-lookup"><span data-stu-id="41d25-112">There are two durability options for memory-optimized tables:</span></span>  
+  
+ <span data-ttu-id="41d25-113">SCHEMA_ONLY (tabla no durable)</span><span class="sxs-lookup"><span data-stu-id="41d25-113">SCHEMA_ONLY (non-durable table)</span></span>  
+ <span data-ttu-id="41d25-114">Esta opción garantiza la durabilidad del esquema de tabla, incluidos los índices.</span><span class="sxs-lookup"><span data-stu-id="41d25-114">This option ensures durability of the table schema, including indexes.</span></span> <span data-ttu-id="41d25-115">Cuando se reinicia [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)], la tabla no durable se vuelve a crear pero se inicia sin datos.</span><span class="sxs-lookup"><span data-stu-id="41d25-115">When [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] is restarted, the non-durable table is recreated, but starts with no data.</span></span> <span data-ttu-id="41d25-116">(Esto es distinto de una tabla en tempdb, donde tanto la tabla como sus datos se pierden al reiniciar). Un escenario típico para crear una tabla no durable es almacenar datos transitorios, como una tabla de ensayo para un proceso ETL.</span><span class="sxs-lookup"><span data-stu-id="41d25-116">(This is unlike a table in tempdb, where both the table and its data are lost upon restart.) A typical scenario for creating a non-durable table is to store transient data, such as a staging table for an ETL process.</span></span> <span data-ttu-id="41d25-117">La durabilidad de SCHEMA_ONLY evita tanto el registro de transacciones como el punto de comprobación, lo que puede reducir significativamente las operaciones de E/S.</span><span class="sxs-lookup"><span data-stu-id="41d25-117">A SCHEMA_ONLY durability avoids both transaction logging and checkpoint, which can significantly reduce I/O operations.</span></span>  
+  
+ <span data-ttu-id="41d25-118">SCHEMA_AND_DATA (tabla durable)</span><span class="sxs-lookup"><span data-stu-id="41d25-118">SCHEMA_AND_DATA (durable table)</span></span>  
+ <span data-ttu-id="41d25-119">Esta opción proporciona durabilidad para el esquema y los datos.</span><span class="sxs-lookup"><span data-stu-id="41d25-119">This option provides durability of both schema and data.</span></span> <span data-ttu-id="41d25-120">El nivel de durabilidad de los datos depende de si elige confirmar una transacción como totalmente durable o con durabilidad diferida.</span><span class="sxs-lookup"><span data-stu-id="41d25-120">The level of data durability depends on whether you commit a transaction as fully durable or with delayed durability.</span></span> <span data-ttu-id="41d25-121">Las transacciones totalmente durables proporcionan la misma garantía de durabilidad tanto del esquema como de los datos, de forma similar a una tabla basada en disco.</span><span class="sxs-lookup"><span data-stu-id="41d25-121">Fully durable transactions provide the same durability guarantee for data and schema, similar to a disk-based table.</span></span> <span data-ttu-id="41d25-122">La durabilidad diferida mejorará el rendimiento pero podría provocar la pérdida de datos en caso de un bloqueo o una conmutación por error de servidor.</span><span class="sxs-lookup"><span data-stu-id="41d25-122">Delayed durability will improve performance but can potentially result in data loss in case of a server crash or fail over.</span></span> <span data-ttu-id="41d25-123">(Para obtener más información sobre la durabilidad diferida, vea [Controlar la durabilidad de las transacciones](../logs/control-transaction-durability.md)).</span><span class="sxs-lookup"><span data-stu-id="41d25-123">(For more information about delayed durability, see [Control Transaction Durability](../logs/control-transaction-durability.md).)</span></span>  
+  
+ <span data-ttu-id="41d25-124">El esquema de la tabla optimizada para memoria se conserva, de forma similar a las tablas basadas en disco, en el grupo de archivos principal de una base de datos.</span><span class="sxs-lookup"><span data-stu-id="41d25-124">The schema of the memory-optimized table is persisted, similar to disk-based tables, in the primary file group of a database.</span></span>  
+  
+ <span data-ttu-id="41d25-125">Los datos de las tablas optimizadas para memoria durables se guardan en pares de archivos delta y de datos.</span><span class="sxs-lookup"><span data-stu-id="41d25-125">Data in durable memory-optimized tables is saved in data and delta file pairs.</span></span>  
+  
+ <span data-ttu-id="41d25-126">Los índices definidos en las tablas optimizadas para memoria persisten solo en los metadatos, no en el almacenamiento.</span><span class="sxs-lookup"><span data-stu-id="41d25-126">The indexes defined in memory-optimized tables persist only in metadata, not in storage.</span></span> <span data-ttu-id="41d25-127">Las estructuras de índice se generan como parte de la carga de tablas optimizadas para memoria.</span><span class="sxs-lookup"><span data-stu-id="41d25-127">Index structures are generated as part of loading memory-optimized tables.</span></span>  
+  
+ <span data-ttu-id="41d25-128">Las filas se eliminan explícitamente por medio de una instrucción DELETE o indirectamente por medio de una instrucción UPDATE.</span><span class="sxs-lookup"><span data-stu-id="41d25-128">Rows are deleted either explicitly by a DELETE statement or indirectly by an UPDATE statement.</span></span> <span data-ttu-id="41d25-129">Se ejecuta una operación UPDATE como una eliminación seguida de una inserción.</span><span class="sxs-lookup"><span data-stu-id="41d25-129">An UPDATE operation is executed as a delete followed by an insert.</span></span> <span data-ttu-id="41d25-130">Cuando se elimina una fila, no se realiza ningún cambio en un archivo de datos pero se anexa una nueva fila, que identifica la fila eliminada, al archivo delta correspondiente.</span><span class="sxs-lookup"><span data-stu-id="41d25-130">When a row is deleted, no change is made to a data file but a new row, identifying the deleted row, is appended to the corresponding delta file.</span></span>  
+  
+ <span data-ttu-id="41d25-131">Durante las operaciones de restauración o recuperación, el motor OLTP en memoria lee los archivos delta y de datos para cargarlos en la memoria física.</span><span class="sxs-lookup"><span data-stu-id="41d25-131">During recovery or restore operations, the In-Memory OLTP engine reads data and delta files for loading into physical memory.</span></span> <span data-ttu-id="41d25-132">El tiempo de carga está determinado por:</span><span class="sxs-lookup"><span data-stu-id="41d25-132">The load time is determined by:</span></span>  
+  
+-   <span data-ttu-id="41d25-133">Cantidad de datos que se van a cargar.</span><span class="sxs-lookup"><span data-stu-id="41d25-133">The amount of data to load.</span></span>  
+  
+-   <span data-ttu-id="41d25-134">Ancho de banda secuencial de E/S.</span><span class="sxs-lookup"><span data-stu-id="41d25-134">Sequential I/O bandwidth.</span></span>  
+  
+-   <span data-ttu-id="41d25-135">Grado de paralelismo, determinado por el número de contenedores de archivos y de núcleos del procesador.</span><span class="sxs-lookup"><span data-stu-id="41d25-135">Degree of parallelism, determined by number of file containers and processor cores.</span></span>  
+  
+-   <span data-ttu-id="41d25-136">La cantidad de entradas de registro en la parte activa del registro que tienen que rehacerse.</span><span class="sxs-lookup"><span data-stu-id="41d25-136">The amount of log records in the active portion of the log that need to be redone.</span></span>  
+  
+## <a name="see-also"></a><span data-ttu-id="41d25-137">Consulte también</span><span class="sxs-lookup"><span data-stu-id="41d25-137">See Also</span></span>  
+ [<span data-ttu-id="41d25-138">Crear y administrar el almacenamiento de objetos optimizados para memoria</span><span class="sxs-lookup"><span data-stu-id="41d25-138">Creating and Managing Storage for Memory-Optimized Objects</span></span>](creating-and-managing-storage-for-memory-optimized-objects.md)  
+  
+  
