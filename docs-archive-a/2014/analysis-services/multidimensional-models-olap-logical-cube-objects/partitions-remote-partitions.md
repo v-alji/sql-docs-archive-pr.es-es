@@ -1,0 +1,61 @@
+---
+title: Particiones remotas | Microsoft Docs
+ms.custom: ''
+ms.date: 03/06/2017
+ms.prod: sql-server-2014
+ms.reviewer: ''
+ms.technology: analysis-services
+ms.topic: reference
+helpviewer_keywords:
+- storage [Analysis Services], partitions
+- archiving remote partitions [Analysis Services]
+- partitions [Analysis Services], remote
+- restoring remote partitions [Analysis Services]
+- backing up remote partitions [Analysis Services]
+- partitions [Analysis Services], storage
+- storing data [Analysis Services], partitions
+- remote partitions [Analysis Services]
+ms.assetid: 63f5d9f5-c6b6-4ceb-94fe-7b6c396d10bb
+author: minewiskan
+ms.author: owend
+ms.openlocfilehash: 32fdf05d061d4e1c1da6ec0ef9179ecd12bda172
+ms.sourcegitcommit: ad4d92dce894592a259721a1571b1d8736abacdb
+ms.translationtype: MT
+ms.contentlocale: es-ES
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87746577"
+---
+# <a name="remote-partitions"></a><span data-ttu-id="003fb-102">Particiones remotas</span><span class="sxs-lookup"><span data-stu-id="003fb-102">Remote Partitions</span></span>
+  <span data-ttu-id="003fb-103">Los datos de una partición remota se almacenan en una instancia diferente de Microsoft que [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)] la instancia que contiene las definiciones (metadatos) de la partición y su cubo primario.</span><span class="sxs-lookup"><span data-stu-id="003fb-103">The data of a remote partition is stored on a different instance of Microsoft [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)] than the instance that contains the definitions (metadata) of the partition and its parent cube.</span></span> <span data-ttu-id="003fb-104">Una partición remota se administra en la misma instancia de [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)] donde se definen la partición y su cubo primario.</span><span class="sxs-lookup"><span data-stu-id="003fb-104">A remote partition is administered on the same instance of [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)] where the partition and its parent cube are defined.</span></span>  
+  
+> [!NOTE]  
+>  <span data-ttu-id="003fb-105">Para almacenar una partición remota, el equipo debe tener una instancia de [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)] instalada y ejecutarse en el mismo nivel de Service Pack que la instancia en la que se definió la partición.</span><span class="sxs-lookup"><span data-stu-id="003fb-105">To store a remote partition, the computer must have an instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)][!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)] installed and be running the same service pack level as the instance where the partition was defined.</span></span> <span data-ttu-id="003fb-106">No se admiten particiones remotas en instancias de versiones anteriores de [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)].</span><span class="sxs-lookup"><span data-stu-id="003fb-106">Remote partitions on instances of an earlier version of [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)] are not supported.</span></span>  
+  
+ <span data-ttu-id="003fb-107">Cuando se incluyen particiones remotas en un grupo de medida, se distribuye la utilización de la CPU y la memoria del cubo entre todas las particiones del grupo de medida.</span><span class="sxs-lookup"><span data-stu-id="003fb-107">When remote partitions are included in a measure group, the memory and CPU utilization of the cube is distributed across all the partitions in the measure group.</span></span> <span data-ttu-id="003fb-108">Por ejemplo, al procesar una partición remota, sola o como parte del procesamiento del cubo primario, la mayor parte de la utilización de la CPU y la memoria de esa partición tiene lugar en la instancia remota de [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)].</span><span class="sxs-lookup"><span data-stu-id="003fb-108">For example, when a remote partition is processed, either alone or as part of parent cube processing, most of the memory and CPU utilization for that partition occurs on the remote instance of [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)].</span></span>  
+  
+> [!NOTE]  
+>  <span data-ttu-id="003fb-109">Un cubo que contenga particiones remotas puede contener dimensiones habilitadas para escritura; sin embargo, esto puede afectar al rendimiento del cubo.</span><span class="sxs-lookup"><span data-stu-id="003fb-109">A cube that contains remote partitions can contain write-enabled dimensions; however, this may affect performance for the cube.</span></span> <span data-ttu-id="003fb-110">Para obtener más información acerca de las dimensiones habilitadas para escritura, consulte [dimensiones habilitadas para escritura](../multidimensional-models-olap-logical-dimension-objects/write-enabled-dimensions.md).</span><span class="sxs-lookup"><span data-stu-id="003fb-110">For more information about write-enabled dimensions, see [Write-Enabled Dimensions](../multidimensional-models-olap-logical-dimension-objects/write-enabled-dimensions.md).</span></span>  
+  
+## <a name="storage-modes-for-remote-partitions"></a><span data-ttu-id="003fb-111">Modos de almacenamiento para particiones remotas</span><span class="sxs-lookup"><span data-stu-id="003fb-111">Storage Modes for Remote Partitions</span></span>  
+ <span data-ttu-id="003fb-112">Las particiones remotas pueden usar cualquiera de los tipos de almacenamiento utilizados por las particiones locales: OLAP multidimensional (MOLAP), OLAP híbrido (HOLAP) u OLAP relacional (ROLAP).</span><span class="sxs-lookup"><span data-stu-id="003fb-112">Remote partitions may use any of the storage types used by local partitions: multidimensional OLAP (MOLAP), hybrid OLAP (HOLAP), or relational OLAP (ROLAP).</span></span> <span data-ttu-id="003fb-113">Las particiones remotas también pueden usar almacenamiento en caché automático.</span><span class="sxs-lookup"><span data-stu-id="003fb-113">Remote partitions may also use proactive caching.</span></span> <span data-ttu-id="003fb-114">En función del modo de almacenamiento de una partición remota, en la instancia remota de [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)] se almacenan los datos siguientes.</span><span class="sxs-lookup"><span data-stu-id="003fb-114">Depending on the storage mode of a remote partition, the following data is stored on the remote instance of [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)].</span></span>  
+  
+|||  
+|-|-|  
+|<span data-ttu-id="003fb-115">Tipo de almacenamiento</span><span class="sxs-lookup"><span data-stu-id="003fb-115">Storage Type</span></span>|<span data-ttu-id="003fb-116">data</span><span class="sxs-lookup"><span data-stu-id="003fb-116">Data</span></span>|  
+|<span data-ttu-id="003fb-117">MOLAP</span><span class="sxs-lookup"><span data-stu-id="003fb-117">MOLAP</span></span>|<span data-ttu-id="003fb-118">Las agregaciones de la partición y una copia de los datos de origen de la partición</span><span class="sxs-lookup"><span data-stu-id="003fb-118">The partition's aggregations and a copy of the partition's source data</span></span>|  
+|<span data-ttu-id="003fb-119">HOLAP</span><span class="sxs-lookup"><span data-stu-id="003fb-119">HOLAP</span></span>|<span data-ttu-id="003fb-120">Las agregaciones de la partición</span><span class="sxs-lookup"><span data-stu-id="003fb-120">The partitions aggregations</span></span>|  
+|<span data-ttu-id="003fb-121">ROLAP</span><span class="sxs-lookup"><span data-stu-id="003fb-121">ROLAP</span></span>|<span data-ttu-id="003fb-122">Ningún dato de partición</span><span class="sxs-lookup"><span data-stu-id="003fb-122">No partition data</span></span>|  
+  
+ <span data-ttu-id="003fb-123">Si un grupo de medida contiene varias particiones MOLAP u HOLAP almacenadas en varias instancias de [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)], el cubo distribuye los datos del grupo de medida entre esas instancias de [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)].</span><span class="sxs-lookup"><span data-stu-id="003fb-123">If a measure group contains multiple MOLAP or HOLAP partitions stored on multiple instances of [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)], the cube distributes the data in the measure group data among those instances of [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)].</span></span>  
+  
+## <a name="merging-remote-partitions"></a><span data-ttu-id="003fb-124">Combinar particiones remotas</span><span class="sxs-lookup"><span data-stu-id="003fb-124">Merging Remote Partitions</span></span>  
+ <span data-ttu-id="003fb-125">Las particiones remotas solo se pueden mezclar con otras particiones remotas que se almacenen en la misma instancia remota de [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)].</span><span class="sxs-lookup"><span data-stu-id="003fb-125">Remote partitions can be merged only with other remote partitions that are stored on the same remote instance of [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)].</span></span> <span data-ttu-id="003fb-126">Para obtener más información acerca de la combinación de particiones, consulte [mezclar particiones en Analysis Services &#40;SSAS-multidimensional&#41;](../multidimensional-models/merge-partitions-in-analysis-services-ssas-multidimensional.md).</span><span class="sxs-lookup"><span data-stu-id="003fb-126">For more information about merging partitions, see [Merge Partitions in Analysis Services &#40;SSAS - Multidimensional&#41;](../multidimensional-models/merge-partitions-in-analysis-services-ssas-multidimensional.md).</span></span>  
+  
+## <a name="archiving-and-restoring-remote-partitions"></a><span data-ttu-id="003fb-127">Archivar y restaurar particiones remotas</span><span class="sxs-lookup"><span data-stu-id="003fb-127">Archiving and Restoring Remote Partitions</span></span>  
+ <span data-ttu-id="003fb-128">Los datos de particiones remotas se pueden archivar o restaurar cuando la base de datos que almacena la partición remota se archiva o restaura.</span><span class="sxs-lookup"><span data-stu-id="003fb-128">Data in remote partitions can be archived or restored when the database that stores the remote partition is archived or restored.</span></span> <span data-ttu-id="003fb-129">Si se restaura una base de datos sin restaurar una partición remota, se debe procesar la partición remota para poder utilizar los datos de la partición.</span><span class="sxs-lookup"><span data-stu-id="003fb-129">If you restore a database without restoring a remote partition, you must process the remote partition before you can use the data in the partition.</span></span> <span data-ttu-id="003fb-130">Para obtener más información sobre cómo archivar y restaurar bases de datos, vea [copia de seguridad y restauración de bases de datos de Analysis Services](../multidimensional-models/backup-and-restore-of-analysis-services-databases.md).</span><span class="sxs-lookup"><span data-stu-id="003fb-130">For more information about archiving and restoring databases, see [Backup and Restore of Analysis Services Databases](../multidimensional-models/backup-and-restore-of-analysis-services-databases.md).</span></span>  
+  
+## <a name="see-also"></a><span data-ttu-id="003fb-131">Consulte también</span><span class="sxs-lookup"><span data-stu-id="003fb-131">See Also</span></span>  
+ <span data-ttu-id="003fb-132">[Crear y administrar una partición remota &#40;Analysis Services&#41;](../multidimensional-models/create-and-manage-a-remote-partition-analysis-services.md) </span><span class="sxs-lookup"><span data-stu-id="003fb-132">[Create and Manage a Remote Partition &#40;Analysis Services&#41;](../multidimensional-models/create-and-manage-a-remote-partition-analysis-services.md) </span></span>  
+ [<span data-ttu-id="003fb-133">Procesar objetos de Analysis Services</span><span class="sxs-lookup"><span data-stu-id="003fb-133">Processing Analysis Services Objects</span></span>](../multidimensional-models/processing-analysis-services-objects.md)  
+  
+  
