@@ -6,4 +6,4 @@ ms.contentlocale: es-ES
 ms.lasthandoff: 08/04/2020
 ms.locfileid: "87662000"
 ---
-SQL Server 2014
+SQL Server 2014

@@ -6,4 +6,4 @@ ms.contentlocale: es-ES
 ms.lasthandoff: 08/04/2020
 ms.locfileid: "87661999"
 ---
-SQL Server 2012
+SQL Server 2012
